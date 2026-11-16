@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="doorassist-bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e4a5ff" />
+      <stop offset="50%" stop-color="#cbbdff" />
+      <stop offset="100%" stop-color="#acdcff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Squircle Background -->
+  <rect width="64" height="64" rx="18" fill="url(#doorassist-bg)" />
+
+  <!-- Subtle Inner Glass Highlight -->
+  <rect x="2" y="2" width="60" height="60" rx="16" stroke="#ffffff" stroke-opacity="0.65" stroke-width="2" />
+
+  <!-- Minimalist Home / Doorway Emblem -->
+  <path d="M17 30.5L32 18L47 30.5V45C47 46.6569 45.6569 48 44 48H20C18.3431 48 17 46.6569 17 45V30.5Z" fill="#0f172a" />
+
+  <!-- Doorway Arch Cutout -->
+  <path d="M27.5 48V37C27.5 34.5147 29.5147 32.5 32 32.5C34.4853 32.5 36.5 34.5147 36.5 37V48H27.5Z" fill="url(#doorassist-bg)" />
+
+  <!-- Sparkle Accent -->
+  <circle cx="46" cy="18" r="3" fill="#ffffff" />
+</svg>
