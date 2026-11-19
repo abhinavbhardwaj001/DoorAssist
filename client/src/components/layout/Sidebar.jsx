@@ -52,23 +52,21 @@ const Sidebar = ({ user, onNavigate }) => {
   const links = navigation[user?.role] || [];
 
   return (
-    <aside className="relative flex h-full w-full flex-col overflow-hidden border-r border-white/60 bg-white/80 backdrop-blur-2xl">
-      <div className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-[#e4a5ff] opacity-20 blur-3xl"></div>
-      <div className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-[#acdcff] opacity-25 blur-3xl"></div>
-
+    <aside className="flex h-full w-full flex-col border-r border-[#d8e2eb] bg-white">
       {/* Brand Header */}
-      <div className="relative z-10 border-b border-[#bfcaff]/30 px-6 py-6">
+      <div className="border-b border-[#e2e8f0] px-6 py-6">
         <Link
           to="/"
           onClick={onNavigate}
-          className="inline-block text-2xl font-extrabold tracking-tight text-slate-800 transition-colors hover:text-slate-600"
+          className="inline-flex items-center gap-2 text-2xl font-extrabold tracking-tight text-[#0a1128] transition-colors hover:text-[#034078]"
         >
-          DoorAssist
+          <span>DoorAssist</span>
+          <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
         </Link>
 
         <div className="mt-1.5 flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-linear-to-r from-[#e4a5ff] to-[#acdcff]"></span>
-          <p className="text-xs font-semibold tracking-wide text-slate-400">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#1282a2]" />
+          <p className="text-xs font-bold uppercase tracking-wider text-[#64748b]">
             Service Management
           </p>
         </div>
@@ -77,7 +75,7 @@ const Sidebar = ({ user, onNavigate }) => {
       {/* Navigation Links */}
       <nav
         aria-label="Dashboard navigation"
-        className="relative z-10 flex-1 space-y-1.5 overflow-y-auto px-4 py-6"
+        className="flex-1 space-y-1.5 overflow-y-auto px-4 py-6"
       >
         {links.map((link) => {
           const IconComponent = link.icon;
@@ -93,20 +91,20 @@ const Sidebar = ({ user, onNavigate }) => {
               }
               onClick={onNavigate}
               className={({ isActive }) =>
-                `group flex items-center gap-3.5 rounded-xl px-4 py-3 text-sm transition-all ${
+                `group flex items-center gap-3.5 rounded-xl px-4 py-3 text-sm transition-colors ${
                   isActive
-                    ? "bg-linear-to-r from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 font-bold text-slate-900 shadow-[0_4px_15px_rgba(203,189,255,0.2)] ring-1 ring-inset ring-[#deabff]/60"
-                    : "font-semibold text-slate-600 hover:bg-white/70 hover:text-slate-900 hover:shadow-xs"
+                    ? "bg-[#034078] font-bold text-white shadow-2xs"
+                    : "font-semibold text-[#33415c] hover:bg-[#f4f7fa] hover:text-[#0a1128]"
                 }`
               }
             >
               {({ isActive }) => (
                 <>
                   <div
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-colors ${
                       isActive
-                        ? "bg-white/80 text-slate-900 shadow-xs"
-                        : "bg-slate-100/70 text-slate-500 group-hover:bg-[#cbbdff]/25 group-hover:text-slate-800"
+                        ? "border-white/20 bg-[#001f54] text-white"
+                        : "border-[#d8e2eb] bg-[#f8fafc] text-[#1282a2] group-hover:border-[#1282a2]/40 group-hover:bg-white group-hover:text-[#034078]"
                     }`}
                   >
                     <IconComponent aria-hidden="true" className="h-4 w-4" />
@@ -121,13 +119,13 @@ const Sidebar = ({ user, onNavigate }) => {
       </nav>
 
       {/* Footer Link */}
-      <div className="relative z-10 border-t border-[#bfcaff]/30 p-4">
+      <div className="border-t border-[#e2e8f0] p-4">
         <Link
           to="/"
           onClick={onNavigate}
-          className="group flex items-center gap-3 rounded-xl border border-[#bfcaff]/40 bg-white/60 px-4 py-3 text-sm font-bold text-slate-700 shadow-xs transition-all hover:border-[#deabff] hover:bg-linear-to-r hover:from-[#e4a5ff]/15 hover:to-[#acdcff]/15 hover:text-slate-900"
+          className="group flex items-center gap-3 rounded-xl border border-[#cbd5e1] bg-[#f8fafc] px-4 py-3 text-sm font-bold text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078]"
         >
-          <ArrowLeft className="h-4 w-4 text-slate-500 transition-transform group-hover:-translate-x-1 group-hover:text-slate-800" />
+          <ArrowLeft className="h-4 w-4 text-[#1282a2] transition-transform group-hover:-translate-x-1 group-hover:text-[#034078]" />
           <span>Back to Website</span>
         </Link>
       </div>

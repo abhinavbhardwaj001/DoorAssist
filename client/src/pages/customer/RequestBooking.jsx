@@ -11,7 +11,6 @@ import {
   Wrench,
   IndianRupee,
   Loader2,
-  Sparkles,
   Store,
 } from "lucide-react";
 import { getServiceById } from "../../services/service.api";
@@ -141,19 +140,19 @@ const RequestBooking = () => {
   };
 
   const inputClass =
-    "mt-2 w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30 disabled:cursor-not-allowed disabled:opacity-60";
+    "mt-2 w-full rounded-xl border border-[#cbd5e1] bg-[#fefcfb] px-4 py-3 text-sm font-medium text-[#0a1128] placeholder:text-[#64748b] transition-all outline-none focus:border-[#1282a2] focus:bg-white focus:ring-3 focus:ring-[#1282a2]/20 disabled:cursor-not-allowed disabled:opacity-60";
 
   if (pageLoading) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#fefcfb] px-4 py-10 sm:px-6 lg:px-8">
         <div
           role="status"
           className="mx-auto max-w-5xl space-y-6 animate-pulse"
         >
-          <div className="h-5 w-36 rounded-full bg-white/75" />
+          <div className="h-9 w-40 rounded-xl bg-[#e2e8f0]" />
           <div className="grid gap-8 lg:grid-cols-3">
-            <div className="h-96 rounded-4xl border border-white/70 bg-white/65 lg:col-span-2" />
-            <div className="h-80 rounded-4xl border border-white/70 bg-white/65" />
+            <div className="h-96 rounded-3xl border border-[#d8e2eb] bg-white lg:col-span-2" />
+            <div className="h-80 rounded-3xl border border-[#d8e2eb] bg-white" />
           </div>
           <span className="sr-only">Loading booking details...</span>
         </div>
@@ -163,23 +162,23 @@ const RequestBooking = () => {
 
   if (!service) {
     return (
-      <div className="flex min-h-[70vh] items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md rounded-4xl border border-white/75 bg-white/80 p-8 text-center shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-10">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100/80 text-rose-600 ring-1 ring-inset ring-rose-200/80">
+      <div className="flex min-h-[70vh] items-center justify-center bg-[#fefcfb] px-4 py-12">
+        <div className="w-full max-w-md rounded-3xl border border-[#d8e2eb] bg-white p-8 text-center shadow-xs sm:p-10">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600">
             <AlertCircle className="h-7 w-7" />
           </div>
 
-          <h1 className="mt-5 text-2xl font-extrabold text-slate-900">
+          <h1 className="mt-5 text-2xl font-extrabold text-[#0a1128]">
             Service Unavailable
           </h1>
 
-          <p role="alert" className="mt-3 text-sm font-medium text-slate-500">
+          <p role="alert" className="mt-3 text-sm font-medium text-[#33415c]">
             {fetchError || "This service could not be found."}
           </p>
 
           <Link
             to="/services"
-            className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:brightness-105"
+            className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54]"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Browse Services</span>
@@ -199,28 +198,28 @@ const RequestBooking = () => {
   );
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-5xl">
         <Link
           to={`/services/${serviceId}`}
-          className="inline-flex items-center gap-2 rounded-full border border-[#bfcaff]/45 bg-white/70 px-4 py-2 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 sm:text-sm"
+          className="inline-flex items-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2.5 text-xs font-bold text-[#0a1128] shadow-xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] sm:text-sm"
         >
-          <ArrowLeft className="h-4 w-4 text-[#7c56a8]" />
+          <ArrowLeft className="h-4 w-4 text-[#1282a2]" />
           <span>Back to Service</span>
         </Link>
 
-        {/* Page Header */}
-        <div className="mt-6">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-            <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
+        {/* Page Header Card */}
+        <div className="mt-6 rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+            <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
             <span>Schedule Appointment</span>
           </div>
 
-          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
             Request a Booking
           </h1>
 
-          <p className="mt-1.5 text-sm font-medium text-slate-500">
+          <p className="mt-1.5 text-sm font-medium text-[#33415c]">
             Choose a date, time, and service address to send your request to the
             provider.
           </p>
@@ -228,15 +227,10 @@ const RequestBooking = () => {
 
         <div className="mt-8 grid items-start gap-8 lg:grid-cols-3">
           {/* Booking Form */}
-          <div className="relative overflow-hidden rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-8 lg:col-span-2">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#e4a5ff]/15 blur-3xl"
-            />
-
+          <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8 lg:col-span-2">
             {cannotBook && (
-              <div className="relative z-10 mb-6 flex items-start gap-3 rounded-2xl border border-amber-200/80 bg-amber-50/85 p-4 text-sm font-medium text-amber-900">
-                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
+              <div className="mb-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm font-medium text-amber-900">
+                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
                 <span>
                   This service requires price confirmation before booking.
                   Online booking is not currently available.
@@ -244,21 +238,21 @@ const RequestBooking = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="relative z-10 space-y-7">
+            <form onSubmit={handleSubmit} className="space-y-7">
               {/* 1. Date and Time */}
               <div>
                 <div className="mb-4 flex items-center gap-2.5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
-                    <Calendar className="h-4 w-4" />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
+                    <Calendar className="h-4 w-4 text-[#1282a2]" />
                   </div>
-                  <h2 className="text-lg font-extrabold text-slate-900">
+                  <h2 className="text-lg font-extrabold text-[#0a1128]">
                     1. Booking Date & Time
                   </h2>
                 </div>
 
                 <label
                   htmlFor="scheduledAt"
-                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                 >
                   Preferred Date & Time (IST)
                 </label>
@@ -274,19 +268,19 @@ const RequestBooking = () => {
                   className={inputClass}
                 />
 
-                <p className="mt-2 text-xs font-medium text-slate-500">
+                <p className="mt-2 text-xs font-medium text-[#64748b]">
                   All booking times are in Indian Standard Time. The provider
                   must be available for the entire service duration.
                 </p>
               </div>
 
               {/* 2. Service Address */}
-              <div className="border-t border-[#bfcaff]/30 pt-7">
+              <div className="border-t border-[#e2e8f0] pt-7">
                 <div className="mb-5 flex items-center gap-2.5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
-                    <MapPin className="h-4 w-4" />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
+                    <MapPin className="h-4 w-4 text-[#1282a2]" />
                   </div>
-                  <h2 className="text-lg font-extrabold text-slate-900">
+                  <h2 className="text-lg font-extrabold text-[#0a1128]">
                     2. Service Address
                   </h2>
                 </div>
@@ -296,7 +290,7 @@ const RequestBooking = () => {
                     <div>
                       <label
                         htmlFor="serviceArea"
-                        className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                        className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                       >
                         Service Area
                       </label>
@@ -330,7 +324,7 @@ const RequestBooking = () => {
                       <div>
                         <label
                           htmlFor="city"
-                          className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                          className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                         >
                           City
                         </label>
@@ -352,7 +346,7 @@ const RequestBooking = () => {
                       <div>
                         <label
                           htmlFor="state"
-                          className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                          className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                         >
                           State
                         </label>
@@ -376,7 +370,7 @@ const RequestBooking = () => {
                   <div>
                     <label
                       htmlFor="addressLine"
-                      className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                      className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                     >
                       Full Address
                     </label>
@@ -399,7 +393,7 @@ const RequestBooking = () => {
                   <div>
                     <label
                       htmlFor="pincode"
-                      className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                      className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                     >
                       Pincode
                     </label>
@@ -432,12 +426,12 @@ const RequestBooking = () => {
               </div>
 
               {/* 3. Additional Details */}
-              <div className="border-t border-[#bfcaff]/30 pt-7">
+              <div className="border-t border-[#e2e8f0] pt-7">
                 <div className="mb-4 flex items-center gap-2.5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
-                    <FileText className="h-4 w-4" />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
+                    <FileText className="h-4 w-4 text-[#1282a2]" />
                   </div>
-                  <h2 className="text-lg font-extrabold text-slate-900">
+                  <h2 className="text-lg font-extrabold text-[#0a1128]">
                     3. Additional Details
                   </h2>
                 </div>
@@ -445,12 +439,12 @@ const RequestBooking = () => {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="customerNote"
-                    className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                    className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                   >
                     Note for Provider (Optional)
                   </label>
 
-                  <span className="text-xs font-semibold text-slate-400">
+                  <span className="text-xs font-semibold text-[#64748b]">
                     {formData.customerNote.length}/500
                   </span>
                 </div>
@@ -471,7 +465,7 @@ const RequestBooking = () => {
               <button
                 type="submit"
                 disabled={submitting || cannotBook}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-3.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99] disabled:pointer-events-none disabled:opacity-55"
+                className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] disabled:pointer-events-none disabled:opacity-55"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
                 <span>
@@ -481,7 +475,7 @@ const RequestBooking = () => {
                 </span>
               </button>
 
-              <p className="text-center text-xs font-medium leading-5 text-slate-500">
+              <p className="text-center text-xs font-medium leading-5 text-[#64748b]">
                 Your booking will remain pending until the provider accepts it.
               </p>
             </form>
@@ -489,7 +483,7 @@ const RequestBooking = () => {
 
           {/* Service Summary Sidebar */}
           <aside className="lg:sticky lg:top-24">
-            <div className="overflow-hidden rounded-4xl border border-white/75 bg-white/80 shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl">
+            <div className="overflow-hidden rounded-3xl border border-[#d8e2eb] bg-white shadow-xs">
               {service.image ? (
                 <img
                   src={service.image}
@@ -497,50 +491,50 @@ const RequestBooking = () => {
                   className="h-48 w-full object-cover"
                 />
               ) : (
-                <div className="flex h-48 items-center justify-center bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff]">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-white/80 bg-white/75 text-[#8b7cc8] shadow-sm backdrop-blur-xl">
+                <div className="flex h-48 items-center justify-center border-b border-[#e2e8f0] bg-[#f4f7fa]">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#d8e2eb] bg-white text-[#034078] shadow-xs">
                     <Wrench className="h-8 w-8" />
                   </div>
                 </div>
               )}
 
               <div className="p-6">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#7c56a8]">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#1282a2]">
                   Booking Summary
                 </p>
 
-                <h2 className="mt-2 text-xl font-extrabold tracking-tight text-slate-900">
+                <h2 className="mt-2 text-xl font-extrabold tracking-tight text-[#0a1128]">
                   {service.name}
                 </h2>
 
-                <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 sm:text-sm">
-                  <Store className="h-3.5 w-3.5 text-[#7c56a8]" />
+                <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-semibold text-[#33415c] sm:text-sm">
+                  <Store className="h-3.5 w-3.5 text-[#1282a2]" />
                   <span>By {provider?.businessName || "Service Provider"}</span>
                 </p>
 
-                <div className="mt-6 space-y-3.5 border-t border-[#bfcaff]/30 pt-5 text-sm">
+                <div className="mt-6 space-y-3.5 border-t border-[#e2e8f0] pt-5 text-sm">
                   <div className="flex items-center justify-between gap-3">
-                    <span className="inline-flex items-center gap-1.5 font-medium text-slate-500">
-                      <IndianRupee className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <span className="inline-flex items-center gap-1.5 font-medium text-[#33415c]">
+                      <IndianRupee className="h-3.5 w-3.5 text-[#1282a2]" />
                       <span>Price</span>
                     </span>
-                    <span className="font-extrabold text-slate-900">
+                    <span className="font-extrabold text-[#0a1128]">
                       {formatServicePrice(service)}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-3">
-                    <span className="inline-flex items-center gap-1.5 font-medium text-slate-500">
-                      <Clock className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <span className="inline-flex items-center gap-1.5 font-medium text-[#33415c]">
+                      <Clock className="h-3.5 w-3.5 text-[#1282a2]" />
                       <span>Duration</span>
                     </span>
-                    <span className="font-extrabold text-slate-900">
+                    <span className="font-extrabold text-[#0a1128]">
                       {service.durationMinutes} mins
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-3">
-                    <span className="font-medium text-slate-500">Status</span>
+                    <span className="font-medium text-[#33415c]">Status</span>
                     <BookingStatusBadge
                       status="pending"
                       label="Pending approval"
@@ -548,7 +542,7 @@ const RequestBooking = () => {
                   </div>
                 </div>
 
-                <p className="mt-6 rounded-2xl border border-[#bfcaff]/40 bg-white/60 p-3.5 text-xs font-medium leading-5 text-slate-500">
+                <p className="mt-6 rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-3.5 text-xs font-medium leading-5 text-[#33415c]">
                   Service prices are determined by the provider. Submitting a
                   request does not guarantee acceptance until confirmed.
                 </p>

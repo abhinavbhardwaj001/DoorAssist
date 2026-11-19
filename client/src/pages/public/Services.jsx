@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Search, Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 import { getActiveServices } from "../../services/service.api";
 import { getActiveCategories } from "../../services/category.api";
 import ServiceFilters from "../../components/services/ServiceFilters";
@@ -163,34 +163,23 @@ const Services = () => {
   const hasActiveFilters = Boolean(search || categoryId || city);
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Page Header */}
-        <section className="relative overflow-hidden rounded-4xl border border-white/75 bg-white/75 p-7 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-10">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-20 left-1/3 h-48 w-48 rounded-full bg-[#acdcff]/25 blur-3xl"
-          />
-
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/45 bg-white/80 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
-              <span>Explore DoorAssist</span>
-            </div>
-
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-              Find Home Services
-            </h1>
-
-            <p className="mt-2.5 max-w-2xl text-sm font-medium leading-6 text-slate-500 sm:text-base">
-              Browse available services from verified local providers and find
-              the right help for your home.
-            </p>
+        <section className="rounded-3xl border border-[#d8e2eb] bg-white p-7 shadow-sm sm:p-10">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+            <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
+            <span>Explore DoorAssist</span>
           </div>
+
+          <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-[#0a1128] sm:text-4xl">
+            Find Home Services
+          </h1>
+
+          <p className="mt-2.5 max-w-2xl text-sm font-medium leading-6 text-[#33415c] sm:text-base">
+            Browse available services from verified local providers and find the
+            right help for your home.
+          </p>
         </section>
 
         {/* Filters & Results */}
@@ -209,13 +198,13 @@ const Services = () => {
           />
 
           {/* Results Header */}
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-            <h2 className="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-b border-[#d8e2eb] pb-4">
+            <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
               Available Services
             </h2>
 
             {!loading && !error && (
-              <span className="rounded-full border border-[#bfcaff]/45 bg-white/75 px-3.5 py-1 text-xs font-bold text-slate-600 shadow-xs backdrop-blur-md">
+              <span className="rounded-lg border border-[#d8e2eb] bg-white px-3.5 py-1 text-xs font-bold text-[#034078] shadow-xs">
                 {pagination.total}{" "}
                 {pagination.total === 1 ? "service" : "services"} found
               </span>
@@ -231,14 +220,14 @@ const Services = () => {
               {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden rounded-4xl border border-white/70 bg-white/65"
+                  className="overflow-hidden rounded-2xl border border-[#d8e2eb] bg-white"
                 >
-                  <div className="h-48 bg-white/80" />
+                  <div className="h-48 bg-[#e2e8f0]" />
                   <div className="space-y-3.5 p-6">
-                    <div className="h-4 w-24 rounded-full bg-white/90" />
-                    <div className="h-6 w-3/4 rounded-full bg-white/90" />
-                    <div className="h-4 w-full rounded-full bg-white/80" />
-                    <div className="h-4 w-1/2 rounded-full bg-white/80" />
+                    <div className="h-4 w-24 rounded bg-[#e2e8f0]" />
+                    <div className="h-6 w-3/4 rounded bg-[#e2e8f0]" />
+                    <div className="h-4 w-full rounded bg-[#f1f5f9]" />
+                    <div className="h-4 w-1/2 rounded bg-[#f1f5f9]" />
                   </div>
                 </div>
               ))}
@@ -253,7 +242,7 @@ const Services = () => {
           ) : services.length === 0 ? (
             <div className="mt-6">
               <EmptyState
-                icon={<Search className="h-7 w-7 text-[#7c56a8]" />}
+                icon={<Search className="h-7 w-7 text-[#034078]" />}
                 title="No services found"
                 message="Try adjusting your search keywords, category, or city to discover more services."
                 actionLabel={hasActiveFilters ? "Clear Filters" : undefined}

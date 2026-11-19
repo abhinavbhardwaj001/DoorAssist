@@ -87,15 +87,15 @@ const ProviderReviews = () => {
         {/* Page Header */}
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#d8e2eb] bg-white px-3.5 py-1 text-xs font-bold text-[#034078] shadow-2xs">
+              <Sparkles className="h-3.5 w-3.5 text-[#1282a2]" />
               <span>Reputation &amp; Feedback</span>
             </div>
 
-            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
               Customer Reviews
             </h1>
-            <p className="mt-1.5 text-sm font-medium text-slate-500">
+            <p className="mt-1.5 text-sm font-medium text-[#33415c]">
               Track your service ratings and read feedback left by your
               customers.
             </p>
@@ -103,20 +103,11 @@ const ProviderReviews = () => {
         </div>
 
         {/* Rating Overview Card */}
-        <section className="relative mb-8 overflow-hidden rounded-4xl border border-white/70 bg-white/80 p-6 shadow-[0_8px_40px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-[#acdcff]/25 blur-3xl"
-          />
-
-          <div className="relative z-10 grid gap-8 md:grid-cols-3 md:items-center">
+        <section className="mb-8 rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="grid gap-8 md:grid-cols-3 md:items-center">
             {/* Overall Score */}
-            <div className="border-b border-[#bfcaff]/30 pb-6 md:border-b-0 md:border-r md:pb-0 md:pr-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            <div className="border-b border-[#e2e8f0] pb-6 md:border-b-0 md:border-r md:pb-0 md:pr-6">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#64748b]">
                 Overall Rating
               </p>
               <div className="mt-3">
@@ -143,13 +134,14 @@ const ProviderReviews = () => {
                   <button
                     key={star}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() =>
                       setSelectedStar((prev) => (prev === star ? "all" : star))
                     }
-                    className={`group flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm transition-all ${
+                    className={`group flex w-full cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 text-sm transition-colors ${
                       isSelected
-                        ? "bg-linear-to-r from-[#e4a5ff]/25 via-[#cbbdff]/25 to-[#acdcff]/25 font-bold text-slate-900 ring-1 ring-inset ring-[#deabff]/60"
-                        : "font-semibold text-slate-600 hover:bg-white/75 hover:text-slate-900"
+                        ? "border-[#034078]/25 bg-[#f4f7fa] font-extrabold text-[#034078]"
+                        : "border-transparent font-semibold text-[#33415c] hover:border-[#d8e2eb] hover:bg-[#f8fafc] hover:text-[#0a1128]"
                     }`}
                   >
                     <span className="inline-flex w-12 shrink-0 items-center gap-1 text-left text-xs font-bold sm:text-sm">
@@ -157,14 +149,16 @@ const ProviderReviews = () => {
                       <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
                     </span>
 
-                    <div className="h-2.5 flex-1 overflow-hidden rounded-full border border-[#bfcaff]/30 bg-slate-100/80">
+                    <div className="h-2.5 flex-1 overflow-hidden rounded-full border border-[#d8e2eb] bg-[#f4f7fa]">
                       <div
-                        className="h-full rounded-full bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] transition-all duration-300"
+                        className={`h-full rounded-full transition-all duration-300 ${
+                          isSelected ? "bg-[#034078]" : "bg-[#1282a2]"
+                        }`}
                         style={{ width: `${percentage}%` }}
                       />
                     </div>
 
-                    <span className="w-10 shrink-0 text-right text-xs font-bold text-slate-500">
+                    <span className="w-10 shrink-0 text-right text-xs font-bold text-[#64748b]">
                       {count}
                     </span>
                   </button>
@@ -175,12 +169,12 @@ const ProviderReviews = () => {
         </section>
 
         {/* Reviews List Section */}
-        <section className="relative overflow-hidden rounded-4xl border border-white/70 bg-white/80 p-6 shadow-[0_8px_40px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8">
+        <section className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
           {/* Filter Header & Pills */}
-          <div className="mb-6 flex flex-col gap-4 border-b border-[#bfcaff]/30 pb-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          <div className="mb-6 flex flex-col gap-4 border-b border-[#e2e8f0] pb-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4 text-[#9687c7]" />
-              <h2 className="text-base font-extrabold text-slate-900 sm:text-lg">
+              <Filter className="h-4 w-4 text-[#1282a2]" />
+              <h2 className="text-base font-extrabold tracking-tight text-[#0a1128] sm:text-lg">
                 {selectedStar === "all"
                   ? `All Reviews (${reviews.length})`
                   : `${selectedStar}-Star Reviews (${filteredReviews.length})`}
@@ -195,11 +189,12 @@ const ProviderReviews = () => {
                   <button
                     key={filter}
                     type="button"
+                    aria-pressed={isActive}
                     onClick={() => setSelectedStar(filter)}
-                    className={`inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all active:scale-95 ${
+                    className={`inline-flex cursor-pointer items-center gap-1 rounded-full px-3.5 py-1.5 text-xs font-bold transition-colors ${
                       isActive
-                        ? "bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] text-slate-900 shadow-sm shadow-[#cbbdff]/30"
-                        : "border border-[#bfcaff]/40 bg-white/70 text-slate-600 hover:border-[#deabff] hover:bg-white hover:text-slate-900"
+                        ? "bg-[#034078] text-white shadow-2xs hover:bg-[#001f54]"
+                        : "border border-[#cbd5e1] bg-[#f8fafc] text-[#33415c] hover:border-[#1282a2] hover:bg-[#f4f7fa] hover:text-[#0a1128]"
                     }`}
                   >
                     {filter === "all" ? (
@@ -210,7 +205,7 @@ const ProviderReviews = () => {
                         <Star
                           className={`h-3 w-3 ${
                             isActive
-                              ? "fill-slate-900 text-slate-900"
+                              ? "fill-amber-300 text-amber-300"
                               : "fill-amber-400 text-amber-500"
                           }`}
                         />
@@ -228,7 +223,7 @@ const ProviderReviews = () => {
               {[1, 2, 3].map((n) => (
                 <div
                   key={n}
-                  className="h-32 rounded-3xl border border-[#bfcaff]/30 bg-white/60"
+                  className="h-32 rounded-2xl border border-[#d8e2eb] bg-[#f8fafc]"
                 />
               ))}
               <span className="sr-only">Loading your reviews...</span>
@@ -236,34 +231,34 @@ const ProviderReviews = () => {
           ) : error ? (
             <div
               role="alert"
-              className="flex flex-col items-center justify-center gap-2 rounded-3xl border border-red-200/80 bg-red-50/80 p-6 text-center text-sm font-semibold text-red-700 backdrop-blur-md"
+              className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-red-200 bg-red-50 p-6 text-center text-sm font-semibold text-red-900"
             >
               <AlertCircle className="h-5 w-5 text-red-600" />
               <span>{error}</span>
             </div>
           ) : reviews.length === 0 ? (
-            <div className="rounded-3xl border border-[#bfcaff]/35 bg-white/65 p-10 text-center backdrop-blur-md sm:p-12">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-slate-800 ring-1 ring-inset ring-[#deabff]/60">
+            <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-10 text-center sm:p-12">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-[#d8e2eb] bg-white text-[#034078] shadow-2xs">
                 <MessageSquareHeart className="h-6 w-6" />
               </div>
 
-              <h3 className="mt-4 text-base font-extrabold text-slate-900 sm:text-lg">
+              <h3 className="mt-4 text-base font-extrabold text-[#0a1128] sm:text-lg">
                 No reviews yet
               </h3>
-              <p className="mx-auto mt-2 max-w-md text-sm font-medium leading-relaxed text-slate-500">
+              <p className="mx-auto mt-2 max-w-md text-sm font-medium leading-relaxed text-[#33415c]">
                 Once customers complete bookings and leave feedback, their
                 reviews will appear here.
               </p>
             </div>
           ) : filteredReviews.length === 0 ? (
-            <div className="rounded-3xl border border-[#bfcaff]/35 bg-white/65 p-8 text-center backdrop-blur-md">
-              <p className="text-sm font-semibold text-slate-600">
+            <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-8 text-center">
+              <p className="text-sm font-semibold text-[#33415c]">
                 No {selectedStar}-star reviews found.
               </p>
               <button
                 type="button"
                 onClick={() => setSelectedStar("all")}
-                className="mt-4 inline-flex items-center justify-center rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-5 py-2.5 text-xs font-bold text-slate-900 shadow-sm shadow-[#cbbdff]/30 transition-all hover:brightness-105 active:scale-95"
+                className="mt-4 inline-flex cursor-pointer items-center justify-center rounded-xl bg-[#034078] px-5 py-2.5 text-xs font-bold text-white shadow-2xs transition-colors hover:bg-[#001f54]"
               >
                 Show all reviews
               </button>

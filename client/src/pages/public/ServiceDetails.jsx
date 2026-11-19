@@ -69,18 +69,18 @@ const ServiceDetails = () => {
 
   if (loading) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#fefcfb] px-4 py-10 sm:px-6 lg:px-8">
         <div
           role="status"
           className="mx-auto max-w-7xl space-y-6 animate-pulse"
         >
-          <div className="h-6 w-56 rounded-full bg-white/75" />
+          <div className="h-6 w-56 rounded bg-[#e2e8f0]" />
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="space-y-6 lg:col-span-2">
-              <div className="h-80 rounded-4xl border border-white/70 bg-white/65" />
-              <div className="h-64 rounded-4xl border border-white/70 bg-white/65" />
+              <div className="h-80 rounded-2xl border border-[#d8e2eb] bg-white" />
+              <div className="h-64 rounded-2xl border border-[#d8e2eb] bg-white" />
             </div>
-            <div className="h-80 rounded-4xl border border-white/70 bg-white/65" />
+            <div className="h-80 rounded-2xl border border-[#d8e2eb] bg-white" />
           </div>
           <span className="sr-only">Loading service details...</span>
         </div>
@@ -90,23 +90,23 @@ const ServiceDetails = () => {
 
   if (error || !service) {
     return (
-      <div className="flex min-h-[70vh] items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md rounded-4xl border border-white/75 bg-white/80 p-8 text-center shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-10">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100/80 text-rose-600 ring-1 ring-inset ring-rose-200/80">
+      <div className="flex min-h-[75vh] items-center justify-center bg-[#fefcfb] px-4 py-12">
+        <div className="w-full max-w-md rounded-3xl border border-[#d8e2eb] bg-white p-8 text-center shadow-sm sm:p-10">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600">
             <AlertCircle className="h-7 w-7" />
           </div>
 
-          <h1 className="mt-5 text-2xl font-extrabold text-slate-900">
+          <h1 className="mt-5 text-2xl font-extrabold text-[#0a1128]">
             Service Unavailable
           </h1>
 
-          <p role="alert" className="mt-3 text-sm font-medium text-slate-500">
+          <p role="alert" className="mt-3 text-sm font-medium text-[#33415c]">
             {error || "This service could not be found."}
           </p>
 
           <Link
             to="/services"
-            className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:brightness-105"
+            className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54]"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Browse Services</span>
@@ -126,32 +126,32 @@ const ServiceDetails = () => {
     service.price == null;
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Breadcrumbs */}
         <nav
           aria-label="Breadcrumb"
-          className="mb-6 inline-flex flex-wrap items-center gap-1.5 rounded-full border border-[#bfcaff]/45 bg-white/70 px-4 py-2 text-xs font-bold text-slate-500 shadow-xs backdrop-blur-md sm:text-sm"
+          className="mb-6 inline-flex flex-wrap items-center gap-1.5 rounded-xl border border-[#d8e2eb] bg-white px-4 py-2 text-xs font-semibold text-[#33415c] shadow-xs sm:text-sm"
         >
-          <Link to="/" className="transition-colors hover:text-[#7c56a8]">
+          <Link to="/" className="transition-colors hover:text-[#034078]">
             Home
           </Link>
-          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+          <ChevronRight className="h-3.5 w-3.5 text-[#64748b]" />
           <Link
             to="/services"
-            className="transition-colors hover:text-[#7c56a8]"
+            className="transition-colors hover:text-[#034078]"
           >
             Services
           </Link>
-          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
-          <span className="text-slate-900">{service.name}</span>
+          <ChevronRight className="h-3.5 w-3.5 text-[#64748b]" />
+          <span className="font-bold text-[#0a1128]">{service.name}</span>
         </nav>
 
         <div className="grid items-start gap-8 lg:grid-cols-3">
           {/* Main content */}
           <div className="space-y-7 lg:col-span-2">
             {/* Service image */}
-            <div className="overflow-hidden rounded-4xl border border-white/75 bg-white/80 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl">
+            <div className="overflow-hidden rounded-2xl border border-[#d8e2eb] bg-white shadow-xs">
               {service.image ? (
                 <img
                   src={service.image}
@@ -159,42 +159,42 @@ const ServiceDetails = () => {
                   className="h-64 w-full object-cover sm:h-96"
                 />
               ) : (
-                <div className="flex h-64 items-center justify-center bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] sm:h-96">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-white/85 bg-white/80 text-[#8b7cc8] shadow-sm backdrop-blur-xl">
-                    <Wrench className="h-10 w-10" />
+                <div className="flex h-64 items-center justify-center bg-[#f4f7fa] sm:h-96">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#d8e2eb] bg-white text-[#034078]">
+                    <Wrench className="h-8 w-8" />
                   </div>
                 </div>
               )}
             </div>
 
             {/* Service information */}
-            <div className="rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8">
-              <span className="inline-block rounded-full border border-[#deabff]/65 bg-linear-to-r from-[#f6ebff]/90 via-[#f4f1ff]/90 to-[#ebf6ff]/90 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-slate-800 shadow-xs">
+            <div className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+              <span className="inline-block rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#034078]">
                 {category?.name || "Home Service"}
               </span>
 
-              <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+              <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
                 {service.name}
               </h1>
 
-              <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-bold text-slate-600 sm:text-sm">
-                <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#bfcaff]/45 bg-white/75 px-3 py-1.5">
-                  <Clock className="h-4 w-4 text-[#7c56a8]" />
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-bold text-[#0a1128] sm:text-sm">
+                <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5">
+                  <Clock className="h-4 w-4 text-[#1282a2]" />
                   <span>{service.durationMinutes} minutes</span>
                 </span>
 
-                <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#bfcaff]/45 bg-white/75 px-3 py-1.5">
-                  <Tag className="h-4 w-4 text-[#7c56a8]" />
+                <span className="inline-flex items-center gap-1.5 rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5">
+                  <Tag className="h-4 w-4 text-[#034078]" />
                   <span>{formattedPrice}</span>
                 </span>
               </div>
 
-              <div className="mt-7 border-t border-[#bfcaff]/30 pt-6">
-                <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+              <div className="mt-7 border-t border-[#e2e8f0] pt-6">
+                <h2 className="text-lg font-extrabold text-[#0a1128] sm:text-xl">
                   About this Service
                 </h2>
 
-                <p className="mt-3.5 whitespace-pre-line text-sm font-medium leading-7 text-slate-600 sm:text-base">
+                <p className="mt-3.5 whitespace-pre-line text-sm font-medium leading-7 text-[#33415c] sm:text-base">
                   {service.description ||
                     "No additional description is available for this service."}
                 </p>
@@ -203,13 +203,13 @@ const ServiceDetails = () => {
 
             {/* Provider information */}
             {provider && (
-              <div className="rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8">
-                <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+              <div className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+                <h2 className="text-lg font-extrabold text-[#0a1128] sm:text-xl">
                   Service Provider
                 </h2>
 
                 <div className="mt-5 flex flex-col gap-5 sm:flex-row sm:items-center">
-                  <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-3xl border border-white/85 bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] shadow-xs">
+                  <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#d8e2eb] bg-[#f4f7fa]">
                     {provider.profileImage ? (
                       <img
                         src={provider.profileImage}
@@ -217,26 +217,26 @@ const ServiceDetails = () => {
                         className="h-full w-full object-cover"
                       />
                     ) : (
-                      <Store className="h-8 w-8 text-[#7c56a8]" />
+                      <Store className="h-8 w-8 text-[#034078]" />
                     )}
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-lg font-extrabold text-slate-900">
+                    <h3 className="text-lg font-extrabold text-[#0a1128]">
                       {provider.businessName}
                     </h3>
 
-                    <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-slate-500 sm:text-sm">
+                    <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold text-[#33415c] sm:text-sm">
                       {provider.userId?.name && (
                         <span className="inline-flex items-center gap-1.5">
-                          <User className="h-3.5 w-3.5 text-[#7c56a8]" />
+                          <User className="h-3.5 w-3.5 text-[#1282a2]" />
                           <span>Managed by {provider.userId.name}</span>
                         </span>
                       )}
 
                       {provider.experienceYears != null && (
                         <span className="inline-flex items-center gap-1.5">
-                          <Briefcase className="h-3.5 w-3.5 text-[#7c56a8]" />
+                          <Briefcase className="h-3.5 w-3.5 text-[#1282a2]" />
                           <span>
                             {provider.experienceYears} years experience
                           </span>
@@ -247,7 +247,7 @@ const ServiceDetails = () => {
 
                   <Link
                     to={`/providers/${provider._id}`}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#bfcaff]/60 bg-white/85 px-5 py-2.5 text-xs font-bold text-[#7c56a8] shadow-xs transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-95 sm:text-sm"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#cbd5e1] bg-white px-5 py-2.5 text-xs font-bold text-[#0a1128] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] sm:text-sm"
                   >
                     <span>View Profile</span>
                     <ArrowUpRight className="h-4 w-4" />
@@ -255,9 +255,9 @@ const ServiceDetails = () => {
                 </div>
 
                 {provider.serviceAreas?.length > 0 && (
-                  <div className="mt-6 border-t border-[#bfcaff]/30 pt-5">
-                    <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      <MapPin className="h-3.5 w-3.5 text-[#7c56a8]" />
+                  <div className="mt-6 border-t border-[#e2e8f0] pt-5">
+                    <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                      <MapPin className="h-3.5 w-3.5 text-[#1282a2]" />
                       <span>Service Areas</span>
                     </h3>
 
@@ -265,7 +265,7 @@ const ServiceDetails = () => {
                       {provider.serviceAreas.map((area, index) => (
                         <span
                           key={`${area.city}-${area.state}-${index}`}
-                          className="rounded-xl border border-[#deabff]/55 bg-linear-to-r from-[#f6ebff]/85 via-[#f4f1ff]/85 to-[#ebf6ff]/85 px-3 py-1.5 text-xs font-bold text-slate-700"
+                          className="rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3 py-1.5 text-xs font-bold text-[#0a1128]"
                         >
                           {area.city}, {area.state}
                         </span>
@@ -279,66 +279,58 @@ const ServiceDetails = () => {
 
           {/* Booking panel */}
           <aside className="lg:sticky lg:top-24">
-            <div className="relative overflow-hidden rounded-4xl border border-white/80 bg-white/85 p-6 shadow-[0_14px_45px_rgba(203,189,255,0.22)] backdrop-blur-2xl sm:p-7">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-              />
+            <div className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-sm sm:p-7">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                Service Price
+              </p>
 
-              <div className="relative z-10">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Service Price
-                </p>
+              <p className="mt-2 text-3xl font-black tracking-tight text-[#0a1128]">
+                {formattedPrice}
+              </p>
 
-                <p className="mt-2 bg-linear-to-r from-[#8e54b5] via-[#6669c7] to-[#3b82b8] bg-clip-text text-3xl font-black tracking-tight text-transparent">
-                  {formattedPrice}
-                </p>
-
-                <div className="mt-6 space-y-3.5 border-t border-[#bfcaff]/30 pt-5 text-xs font-semibold sm:text-sm">
-                  <div className="flex justify-between gap-3">
-                    <span className="text-slate-500">Duration</span>
-                    <span className="font-bold text-slate-900">
-                      {service.durationMinutes} mins
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between gap-3">
-                    <span className="text-slate-500">Category</span>
-                    <span className="font-bold text-slate-900">
-                      {category?.name || "Service"}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between gap-3">
-                    <span className="text-slate-500">Booking Type</span>
-                    <span className="font-bold text-slate-900">
-                      Request-based
-                    </span>
-                  </div>
+              <div className="mt-6 space-y-3.5 border-t border-[#e2e8f0] pt-5 text-xs font-semibold sm:text-sm">
+                <div className="flex justify-between gap-3">
+                  <span className="text-[#33415c]">Duration</span>
+                  <span className="font-bold text-[#0a1128]">
+                    {service.durationMinutes} mins
+                  </span>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={handleBooking}
-                  disabled={isBookingDisabled}
-                  className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-3.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/35 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99] disabled:pointer-events-none disabled:bg-slate-200 disabled:bg-none disabled:text-slate-500 disabled:shadow-none"
-                >
-                  {!isBookingDisabled && <CalendarCheck className="h-4 w-4" />}
-                  <span>
-                    {service.pricingType === "on_request" ||
-                    service.price == null
-                      ? "Price Confirmation Required"
-                      : user && user.role !== "customer"
-                        ? "Customer Account Required"
-                        : "Request Booking"}
+                <div className="flex justify-between gap-3">
+                  <span className="text-[#33415c]">Category</span>
+                  <span className="font-bold text-[#0a1128]">
+                    {category?.name || "Service"}
                   </span>
-                </button>
+                </div>
 
-                <p className="mt-3.5 text-center text-xs font-medium leading-5 text-slate-500">
-                  Your booking request will be sent to the provider for
-                  acceptance.
-                </p>
+                <div className="flex justify-between gap-3">
+                  <span className="text-[#33415c]">Booking Type</span>
+                  <span className="font-bold text-[#0a1128]">
+                    Request-based
+                  </span>
+                </div>
               </div>
+
+              <button
+                type="button"
+                onClick={handleBooking}
+                disabled={isBookingDisabled}
+                className="mt-7 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] disabled:pointer-events-none disabled:bg-[#e2e8f0] disabled:text-[#64748b]"
+              >
+                {!isBookingDisabled && <CalendarCheck className="h-4 w-4" />}
+                <span>
+                  {service.pricingType === "on_request" || service.price == null
+                    ? "Price Confirmation Required"
+                    : user && user.role !== "customer"
+                      ? "Customer Account Required"
+                      : "Request Booking"}
+                </span>
+              </button>
+
+              <p className="mt-3.5 text-center text-xs font-medium leading-5 text-[#64748b]">
+                Your booking request will be sent to the provider for
+                acceptance.
+              </p>
             </div>
           </aside>
         </div>

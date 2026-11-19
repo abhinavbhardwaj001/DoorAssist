@@ -16,12 +16,9 @@ const MobileMenu = ({
   return (
     <nav
       id="mobile-navigation"
-      className="relative overflow-hidden border-t border-white/70 bg-white/85 px-4 py-6 shadow-[0_16px_40px_rgba(203,189,255,0.22)] backdrop-blur-2xl md:hidden"
+      className="border-t border-[#d8e2eb] bg-white px-4 py-6 shadow-lg md:hidden"
     >
-      <div className="pointer-events-none absolute -left-12 -top-12 h-36 w-36 rounded-full bg-[#e4a5ff] opacity-25 blur-2xl"></div>
-      <div className="pointer-events-none absolute -bottom-12 -right-12 h-36 w-36 rounded-full bg-[#acdcff] opacity-30 blur-2xl"></div>
-
-      <div className="relative z-10 flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
         {navLinks.map((link) => (
           <NavLink
             key={link.path}
@@ -34,10 +31,10 @@ const MobileMenu = ({
                   ? linkClass({ isActive })
                   : linkClass || "";
 
-              return `${externalClass} flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-all ${
+              return `${externalClass} flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-colors ${
                 isActive
-                  ? "bg-linear-to-r from-[#e4a5ff]/30 via-[#cbbdff]/30 to-[#acdcff]/30 font-bold text-slate-900 ring-1 ring-inset ring-[#deabff]/60"
-                  : "font-semibold text-slate-700 hover:bg-white/70 hover:text-slate-900"
+                  ? "border border-[#034078]/20 bg-[#f4f7fa] font-extrabold text-[#034078]"
+                  : "font-semibold text-[#33415c] hover:bg-[#f8fafc] hover:text-[#0a1128]"
               }`;
             }}
           >
@@ -45,19 +42,19 @@ const MobileMenu = ({
           </NavLink>
         ))}
 
-        <div className="my-2 border-t border-[#bfcaff]/30" />
+        <div className="my-2 border-t border-[#e2e8f0]" />
 
         {user ? (
           <div className="space-y-3">
-            <div className="flex items-center gap-3 rounded-2xl border border-[#bfcaff]/30 bg-white/60 px-4 py-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-[#e4a5ff]/40 to-[#acdcff]/40 text-slate-800">
+            <div className="flex items-center gap-3 rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] px-4 py-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-white text-[#1282a2]">
                 <User className="h-4 w-4" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-medium text-slate-500">
+                <p className="text-xs font-medium text-[#64748b]">
                   Signed in as
                 </p>
-                <p className="truncate text-sm font-bold text-slate-800">
+                <p className="truncate text-sm font-extrabold text-[#0a1128]">
                   {user.name}
                 </p>
               </div>
@@ -66,9 +63,9 @@ const MobileMenu = ({
             <Link
               to={dashboardPath}
               onClick={onClose}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#bfcaff]/50 bg-white/75 px-4 py-3 text-sm font-bold text-slate-800 shadow-xs transition-all hover:border-[#deabff] hover:bg-linear-to-r hover:from-[#e4a5ff]/15 hover:to-[#acdcff]/15 active:scale-[0.98]"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-4 py-3 text-sm font-bold text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078]"
             >
-              <LayoutDashboard className="h-4 w-4 text-slate-600" />
+              <LayoutDashboard className="h-4 w-4 text-[#1282a2]" />
               <span>Dashboard</span>
             </Link>
 
@@ -76,7 +73,7 @@ const MobileMenu = ({
               type="button"
               onClick={onLogout}
               disabled={loggingOut}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-4 py-3.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:brightness-105 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70"
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3.5 text-sm font-bold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100 hover:text-red-800 disabled:pointer-events-none disabled:opacity-60"
             >
               <LogOut className="h-4 w-4" />
               <span>{loggingOut ? "Logging out..." : "Logout"}</span>
@@ -87,16 +84,16 @@ const MobileMenu = ({
             <Link
               to="/login"
               onClick={onClose}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#bfcaff]/50 bg-white/75 px-4 py-3 text-sm font-bold text-slate-800 shadow-xs transition-all hover:border-[#deabff] hover:bg-white active:scale-[0.98]"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-4 py-3 text-sm font-bold text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078]"
             >
-              <LogIn className="h-4 w-4 text-slate-600" />
+              <LogIn className="h-4 w-4 text-[#1282a2]" />
               <span>Login</span>
             </Link>
 
             <Link
               to="/register"
               onClick={onClose}
-              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-4 py-3.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:brightness-105 active:scale-[0.98]"
+              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#034078] px-4 py-3.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54]"
             >
               <span>Get Started</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

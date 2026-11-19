@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import ProviderServiceForm from "../../components/services/ProviderServiceForm";
 import { getActiveCategories } from "../../services/category.api";
 import {
@@ -76,28 +76,28 @@ const EditService = () => {
   };
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-4xl">
         <Link
           to="/provider/services"
-          className="inline-flex items-center gap-2 rounded-full border border-[#bfcaff]/45 bg-white/70 px-4 py-2 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 sm:text-sm"
+          className="inline-flex items-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2.5 text-xs font-bold text-[#0a1128] shadow-xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] sm:text-sm"
         >
-          <ArrowLeft className="h-4 w-4 text-[#7c56a8]" />
+          <ArrowLeft className="h-4 w-4 text-[#1282a2]" />
           <span>Back to My Services</span>
         </Link>
 
-        {/* Page Header */}
-        <div className="mt-6">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-            <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
+        {/* Page Header Card */}
+        <div className="mt-6 rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+            <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
             <span>Provider Portal</span>
           </div>
 
-          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
             Edit Service
           </h1>
 
-          <p className="mt-1.5 text-sm font-medium text-slate-500">
+          <p className="mt-1.5 text-sm font-medium text-[#33415c]">
             Update your service information, pricing, and image.
           </p>
         </div>
@@ -106,7 +106,7 @@ const EditService = () => {
         {loading ? (
           <div
             role="status"
-            className="mt-8 h-96 animate-pulse rounded-4xl border border-white/70 bg-white/65"
+            className="mt-8 h-96 animate-pulse rounded-3xl border border-[#d8e2eb] bg-white"
           >
             <span className="sr-only">Loading service...</span>
           </div>

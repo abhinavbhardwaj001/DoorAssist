@@ -214,10 +214,10 @@ const AdminCategories = () => {
   const activeCount = categories.filter((category) => category.isActive).length;
 
   const inputClass =
-    "mt-2 w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30";
+    "mt-2 w-full rounded-xl border border-[#cbd5e1] bg-[#fefcfb] px-4 py-3 text-sm font-medium text-[#0a1128] placeholder:text-[#64748b] transition-all outline-none focus:border-[#1282a2] focus:bg-white focus:ring-3 focus:ring-[#1282a2]/20";
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <AdminPageHeader
           title="Manage Categories"
@@ -226,7 +226,7 @@ const AdminCategories = () => {
             <button
               type="button"
               onClick={openCreateModal}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99] sm:w-auto"
+              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] sm:w-auto"
             >
               <Plus className="h-4 w-4" />
               <span>Add Category</span>
@@ -243,39 +243,37 @@ const AdminCategories = () => {
               label: "Total Categories",
               value: categories.length,
               Icon: Layers,
-              iconClass:
-                "bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-[#deabff]/60",
+              iconClass: "border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]",
             },
             {
               label: "Active Categories",
               value: activeCount,
               Icon: CheckCircle2,
-              iconClass:
-                "bg-emerald-100/80 text-emerald-600 ring-emerald-200/80",
+              iconClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
             },
             {
               label: "Inactive Categories",
               value: categories.length - activeCount,
               Icon: Power,
-              iconClass: "bg-slate-100/90 text-slate-600 ring-slate-200/80",
+              iconClass: "border-[#d8e2eb] bg-[#f1f5f9] text-[#33415c]",
             },
           ].map(({ label, value, Icon, iconClass }) => (
             <div
               key={label}
-              className="relative overflow-hidden rounded-3xl border border-white/75 bg-white/80 p-6 shadow-[0_8px_30px_rgba(203,189,255,0.14)] backdrop-blur-2xl"
+              className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs"
             >
               <div className="flex items-center justify-between gap-3">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#64748b]">
                   {label}
                 </p>
                 <div
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ${iconClass}`}
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${iconClass}`}
                 >
                   <Icon className="h-4 w-4" />
                 </div>
               </div>
 
-              <p className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900">
+              <p className="mt-3 text-3xl font-extrabold tracking-tight text-[#0a1128]">
                 {loading ? "—" : formatNumber(value)}
               </p>
             </div>
@@ -283,7 +281,7 @@ const AdminCategories = () => {
         </div>
 
         {/* Filter & Refresh Toolbar */}
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/75 bg-white/75 p-3 shadow-[0_4px_25px_rgba(203,189,255,0.12)] backdrop-blur-xl sm:px-4">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#d8e2eb] bg-white p-3 shadow-xs sm:px-4">
           <div className="flex flex-wrap gap-2">
             {["all", "active", "inactive"].map((item) => {
               const isActive = filter === item;
@@ -293,10 +291,10 @@ const AdminCategories = () => {
                   key={item}
                   type="button"
                   onClick={() => setFilter(item)}
-                  className={`rounded-xl px-4 py-2 text-xs font-bold capitalize transition-all active:scale-95 sm:px-5 sm:text-sm ${
+                  className={`cursor-pointer rounded-xl px-4 py-2 text-xs font-bold capitalize transition-colors sm:px-5 sm:text-sm ${
                     isActive
-                      ? "bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] text-slate-900 shadow-sm shadow-[#cbbdff]/30"
-                      : "border border-[#bfcaff]/40 bg-white/70 text-slate-600 hover:border-[#deabff] hover:bg-white hover:text-slate-900"
+                      ? "bg-[#034078] text-white"
+                      : "border border-[#d8e2eb] bg-[#fefcfb] text-[#33415c] hover:border-[#034078] hover:bg-white hover:text-[#0a1128]"
                   }`}
                 >
                   {item}
@@ -309,10 +307,10 @@ const AdminCategories = () => {
             type="button"
             onClick={fetchCategories}
             disabled={loading || Boolean(updatingId)}
-            className="inline-flex items-center gap-2 rounded-xl border border-[#bfcaff]/50 bg-white/80 px-4 py-2 text-xs font-bold text-slate-700 shadow-xs transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-95 disabled:pointer-events-none disabled:opacity-50 sm:text-sm"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2 text-xs font-bold text-[#0a1128] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] disabled:pointer-events-none disabled:opacity-50 sm:text-sm"
           >
             <RefreshCw
-              className={`h-3.5 w-3.5 text-[#7c56a8] ${loading ? "animate-spin" : ""}`}
+              className={`h-3.5 w-3.5 text-[#1282a2] ${loading ? "animate-spin" : ""}`}
             />
             <span>Refresh</span>
           </button>
@@ -327,7 +325,7 @@ const AdminCategories = () => {
             {[1, 2, 3].map((n) => (
               <div
                 key={n}
-                className="h-88 rounded-3xl border border-white/70 bg-white/65"
+                className="h-88 rounded-2xl border border-[#d8e2eb] bg-white"
               />
             ))}
             <span className="sr-only">Loading categories...</span>
@@ -335,7 +333,7 @@ const AdminCategories = () => {
         ) : visibleCategories.length === 0 ? (
           <div className="mt-6">
             <EmptyState
-              icon={<FolderKanban className="h-7 w-7 text-[#7c56a8]" />}
+              icon={<FolderKanban className="h-7 w-7 text-[#034078]" />}
               title="No categories found"
               message="There are no categories matching the selected filter."
             />
@@ -345,20 +343,20 @@ const AdminCategories = () => {
             {visibleCategories.map((category) => (
               <article
                 key={category._id}
-                className="group flex flex-col overflow-hidden rounded-3xl border border-white/75 bg-white/80 shadow-[0_8px_30px_rgba(203,189,255,0.14)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-[#deabff]/70 hover:shadow-[0_14px_40px_rgba(203,189,255,0.25)]"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-[#d8e2eb] bg-white shadow-xs transition-all duration-200 hover:border-[#1282a2] hover:shadow-md"
               >
                 {/* Category Image Header */}
-                <div className="relative h-44 overflow-hidden bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff]">
+                <div className="relative h-44 overflow-hidden border-b border-[#d8e2eb] bg-[#f4f7fa]">
                   {category.image ? (
                     <img
                       src={category.image}
                       alt={category.name}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-103"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/80 bg-white/75 text-[#8b7cc8] shadow-xs backdrop-blur-xl">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-[#d8e2eb] bg-white text-[#034078]">
                         <FolderKanban className="h-6 w-6" />
                       </div>
                     </div>
@@ -366,32 +364,32 @@ const AdminCategories = () => {
 
                   <StatusBadge
                     status={category.isActive ? "Active" : "Inactive"}
-                    className="absolute right-3.5 top-3.5 px-3 py-1 backdrop-blur-xl"
+                    className="absolute right-3.5 top-3.5 px-3 py-1"
                   />
                 </div>
 
                 {/* Card Body */}
                 <div className="flex flex-1 flex-col p-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
+                  <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
                     {category.name}
                   </h2>
 
-                  <p className="mt-1 font-mono text-xs font-medium text-slate-400">
+                  <p className="mt-1 font-mono text-xs font-medium text-[#64748b]">
                     /{category.slug}
                   </p>
 
-                  <p className="mt-4 line-clamp-3 min-h-18 text-sm font-medium leading-6 text-slate-600">
+                  <p className="mt-4 line-clamp-3 min-h-18 text-sm font-medium leading-6 text-[#33415c]">
                     {category.description || "No description provided."}
                   </p>
 
                   <div className="mt-auto pt-6">
-                    <div className="flex gap-3 border-t border-[#bfcaff]/30 pt-5">
+                    <div className="flex gap-3 border-t border-[#e2e8f0] pt-5">
                       <button
                         type="button"
                         onClick={() => openEditModal(category)}
-                        className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-[#bfcaff]/50 bg-white/75 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-xs transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-[0.98] sm:text-sm"
+                        className="inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2.5 text-xs font-bold text-[#0a1128] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] sm:text-sm"
                       >
-                        <Pencil className="h-3.5 w-3.5 text-[#7c56a8]" />
+                        <Pencil className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Edit</span>
                       </button>
 
@@ -399,10 +397,10 @@ const AdminCategories = () => {
                         type="button"
                         onClick={() => setConfirmCategory(category)}
                         disabled={Boolean(updatingId)}
-                        className={`inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 sm:text-sm ${
+                        className={`inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 sm:text-sm ${
                           category.isActive
-                            ? "border border-red-200/90 bg-red-50/75 text-red-600 hover:border-red-300 hover:bg-red-100/80 hover:text-red-700"
-                            : "border border-emerald-200/90 bg-emerald-50/85 text-emerald-700 hover:border-emerald-300 hover:bg-emerald-100/90"
+                            ? "border border-red-200 bg-red-50 text-red-700 hover:border-red-300 hover:bg-red-100"
+                            : "border border-emerald-200 bg-emerald-50 text-emerald-700 hover:border-emerald-300 hover:bg-emerald-100"
                         }`}
                       >
                         <Power className="h-3.5 w-3.5" />
@@ -439,7 +437,7 @@ const AdminCategories = () => {
               type="button"
               onClick={closeModal}
               disabled={saving}
-              className="rounded-xl border border-[#bfcaff]/50 bg-white/75 px-5 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 disabled:opacity-50"
+              className="cursor-pointer rounded-xl border border-[#cbd5e1] bg-white px-5 py-2.5 text-sm font-bold text-[#0a1128] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] disabled:opacity-50"
             >
               Cancel
             </button>
@@ -447,7 +445,7 @@ const AdminCategories = () => {
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-2.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:brightness-105 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-55"
+              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-2.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] disabled:pointer-events-none disabled:opacity-55"
             >
               {saving && <Loader2 className="h-4 w-4 animate-spin" />}
               <span>
@@ -461,7 +459,7 @@ const AdminCategories = () => {
           </>
         }
       >
-        <p className="text-xs font-medium text-slate-500">
+        <p className="text-xs font-medium text-[#33415c]">
           {editingCategory
             ? "Update category details and cover image."
             : "Add a new service category to DoorAssist."}
@@ -471,9 +469,9 @@ const AdminCategories = () => {
           <div>
             <label
               htmlFor="categoryName"
-              className="text-xs font-bold uppercase tracking-wider text-slate-600"
+              className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
             >
-              Category Name <span className="text-rose-500">*</span>
+              Category Name <span className="text-red-600">*</span>
             </label>
 
             <input
@@ -497,12 +495,12 @@ const AdminCategories = () => {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="categoryDescription"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
               >
                 Description
               </label>
 
-              <span className="text-xs font-semibold text-slate-400">
+              <span className="text-xs font-semibold text-[#64748b]">
                 {form.description.length}/500
               </span>
             </div>
@@ -526,12 +524,12 @@ const AdminCategories = () => {
           <div>
             <label
               htmlFor="categoryImage"
-              className="text-xs font-bold uppercase tracking-wider text-slate-600"
+              className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
             >
               Category Image (Optional)
             </label>
 
-            <div className="mt-3 flex h-40 items-center justify-center overflow-hidden rounded-3xl border border-white/80 bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] shadow-inner">
+            <div className="mt-3 flex h-40 items-center justify-center overflow-hidden rounded-2xl border border-[#d8e2eb] bg-[#f4f7fa]">
               {preview ? (
                 <img
                   src={preview}
@@ -539,7 +537,7 @@ const AdminCategories = () => {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/80 bg-white/75 text-[#8b7cc8] shadow-xs backdrop-blur-xl">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#d8e2eb] bg-white text-[#034078]">
                   <ImagePlus className="h-5 w-5" />
                 </div>
               )}
@@ -551,7 +549,7 @@ const AdminCategories = () => {
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="mt-4 block w-full text-xs font-medium text-slate-600 file:mr-4 file:cursor-pointer file:rounded-xl file:border-0 file:bg-linear-to-r file:from-[#e4a5ff] file:via-[#cbbdff] file:to-[#acdcff] file:px-4 file:py-2.5 file:text-xs file:font-bold file:text-slate-900 file:shadow-xs file:transition-all hover:file:brightness-105 sm:text-sm"
+              className="mt-4 block w-full text-xs font-medium text-[#33415c] file:mr-4 file:cursor-pointer file:rounded-xl file:border-0 file:bg-[#034078] file:px-4 file:py-2.5 file:text-xs file:font-bold file:text-white file:transition-colors hover:file:bg-[#001f54] sm:text-sm"
             />
           </div>
         </div>

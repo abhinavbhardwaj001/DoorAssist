@@ -78,3 +78,22 @@ select option:checked {
   background-color: #f4f1ff;
   color: #7c56a8;
 }
+
+:root {
+  --prussian-blue: #0a1128;
+  --deep-navy: #001f54;
+  --yale-blue: #034078;
+  --cerulean: #1282a2;
+  --surface-bg: #fefcfb;
+  --card-bg: #ffffff;
+  --border-subtle: #d8e2eb;
+  --text-primary: #0a1128;
+  --text-secondary: #33415c;
+}
+
+body {
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

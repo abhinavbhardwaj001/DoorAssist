@@ -1,13 +1,12 @@
 import { formatNumber } from "../../utils/formatters";
 
 const VARIANT_CLASSES = {
-  brand:
-    "bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-[#deabff]/60",
-  amber: "bg-amber-100/80 text-amber-600 ring-amber-200/80",
-  sky: "bg-sky-100/80 text-sky-600 ring-sky-200/80",
-  emerald: "bg-emerald-100/80 text-emerald-600 ring-emerald-200/80",
-  rose: "bg-rose-100/80 text-rose-600 ring-rose-200/80",
-  violet: "bg-[#f6ebff] text-[#8b5cf6] ring-[#deabff]/70",
+  brand: "border-[#034078]/20 bg-[#f4f7fa] text-[#034078]",
+  amber: "border-amber-200 bg-amber-50 text-amber-700",
+  sky: "border-[#1282a2]/25 bg-[#1282a2]/10 text-[#1282a2]",
+  emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  rose: "border-red-200 bg-red-50 text-red-700",
+  violet: "border-[#001f54]/20 bg-[#001f54]/10 text-[#001f54]",
 };
 
 const StatCard = ({
@@ -26,20 +25,20 @@ const StatCard = ({
       : value;
 
   return (
-    <div className="flex items-center justify-between rounded-3xl border border-white/75 bg-white/80 p-6 shadow-[0_8px_30px_rgba(203,189,255,0.14)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[#deabff]/60">
+    <div className="flex items-center justify-between rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#1282a2] hover:shadow-md">
       <div>
-        <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+        <p className="text-xs font-bold uppercase tracking-wider text-[#64748b]">
           {label}
         </p>
 
-        <p className="mt-2.5 text-3xl font-extrabold tracking-tight text-slate-900">
+        <p className="mt-2.5 text-3xl font-extrabold tracking-tight text-[#0a1128]">
           {displayValue}
         </p>
       </div>
 
       {Icon && (
         <div
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 ring-inset ${iconClass}`}
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${iconClass}`}
         >
           <Icon className="h-5 w-5" />
         </div>

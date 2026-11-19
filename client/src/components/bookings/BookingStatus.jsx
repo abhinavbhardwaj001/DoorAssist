@@ -1,25 +1,53 @@
 const statusStyles = {
-  pending: "bg-amber-100/80 text-amber-700 ring-amber-500/20",
-  accepted: "bg-[#b2d6ff]/40 text-[#002855] ring-[#b2d6ff]/60",
-  rejected: "bg-red-100/80 text-red-700 ring-red-500/20",
-  in_progress: "bg-[#e4a5ff]/30 text-[#4a2e5d] ring-[#e4a5ff]/50",
-  completed: "bg-emerald-100/80 text-emerald-700 ring-emerald-500/20",
-  cancelled: "bg-slate-100/80 text-slate-600 ring-slate-500/20",
-  payment_pending: "bg-orange-100/80 text-orange-700 ring-orange-500/20",
-  confirmed: "bg-[#acdcff]/40 text-[#023e7d] ring-[#acdcff]/60",
+  pending: {
+    badge: "border-amber-200 bg-amber-50 text-amber-800",
+    dot: "bg-amber-600",
+  },
+  accepted: {
+    badge: "border-[#034078]/25 bg-[#f4f7fa] text-[#034078]",
+    dot: "bg-[#034078]",
+  },
+  rejected: {
+    badge: "border-red-200 bg-red-50 text-red-700",
+    dot: "bg-red-600",
+  },
+  in_progress: {
+    badge: "border-[#1282a2]/30 bg-[#1282a2]/10 text-[#001f54]",
+    dot: "bg-[#1282a2]",
+  },
+  completed: {
+    badge: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    dot: "bg-emerald-600",
+  },
+  cancelled: {
+    badge: "border-[#d8e2eb] bg-[#f8fafc] text-[#33415c]",
+    dot: "bg-[#64748b]",
+  },
+  payment_pending: {
+    badge: "border-orange-200 bg-orange-50 text-orange-800",
+    dot: "bg-orange-600",
+  },
+  confirmed: {
+    badge: "border-[#001f54]/25 bg-[#001f54]/10 text-[#001f54]",
+    dot: "bg-[#001f54]",
+  },
+};
+
+const defaultStatusStyle = {
+  badge: "border-[#d8e2eb] bg-[#f8fafc] text-[#33415c]",
+  dot: "bg-[#64748b]",
 };
 
 const BookingStatus = ({ status }) => {
   const label = status?.replaceAll("_", " ") || "Unknown";
+  const style = statusStyles[status] || defaultStatusStyle;
 
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-bold capitalize ring-1 ring-inset ${
-        statusStyles[status] ||
-        "bg-slate-100/80 text-slate-600 ring-slate-500/20"
-      }`}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold capitalize ${style.badge}`}
     >
-      {label}
+      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${style.dot}`} />
+      <span>{label}</span>
     </span>
   );
 };

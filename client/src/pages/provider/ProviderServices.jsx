@@ -10,7 +10,6 @@ import {
   Pencil,
   Power,
   Loader2,
-  Sparkles,
 } from "lucide-react";
 import {
   getMyProviderServices,
@@ -124,32 +123,34 @@ const ProviderServices = () => {
   ];
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
-              <span>Provider Portal</span>
+        {/* Header Card */}
+        <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+                <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
+                <span>Provider Portal</span>
+              </div>
+
+              <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
+                My Services
+              </h1>
+
+              <p className="mt-1.5 text-sm font-medium text-[#33415c]">
+                Create, edit, and manage your service listings on DoorAssist.
+              </p>
             </div>
 
-            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-              My Services
-            </h1>
-
-            <p className="mt-1.5 text-sm font-medium text-slate-500">
-              Create, edit, and manage your service listings on DoorAssist.
-            </p>
+            <Link
+              to="/provider/services/create"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] sm:w-auto"
+            >
+              <Plus className="h-4 w-4" />
+              <span>Add Service</span>
+            </Link>
           </div>
-
-          <Link
-            to="/provider/services/create"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-5 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99]"
-          >
-            <Plus className="h-4 w-4" />
-            <span>Add Service</span>
-          </Link>
         </div>
 
         {/* Summary KPIs */}
@@ -189,10 +190,10 @@ const ProviderServices = () => {
             type="button"
             onClick={fetchServices}
             disabled={loading || Boolean(updatingId)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#bfcaff]/55 bg-white/80 px-5 py-2.5 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 sm:text-sm"
+            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-5 py-2.5 text-xs font-bold text-[#0a1128] shadow-xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] disabled:pointer-events-none disabled:opacity-50 sm:text-sm"
           >
             <RefreshCw
-              className={`h-4 w-4 text-[#7c56a8] ${loading ? "animate-spin" : ""}`}
+              className={`h-4 w-4 text-[#1282a2] ${loading ? "animate-spin" : ""}`}
             />
             <span>Refresh</span>
           </button>
@@ -207,7 +208,7 @@ const ProviderServices = () => {
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="h-96 rounded-4xl border border-white/70 bg-white/65"
+                className="h-96 rounded-3xl border border-[#d8e2eb] bg-white"
               />
             ))}
             <span className="sr-only">Loading services...</span>
@@ -221,7 +222,7 @@ const ProviderServices = () => {
         ) : filteredServices.length === 0 ? (
           <div className="mt-6">
             <EmptyState
-              icon={<Wrench className="h-7 w-7 text-[#7c56a8]" />}
+              icon={<Wrench className="h-7 w-7 text-[#034078]" />}
               title="No services found"
               message={
                 filter === "all"
@@ -243,10 +244,10 @@ const ProviderServices = () => {
               return (
                 <article
                   key={service._id}
-                  className="group flex flex-col overflow-hidden rounded-4xl border border-white/75 bg-white/80 shadow-[0_8px_30px_rgba(203,189,255,0.16)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-[#deabff]/70 hover:bg-white/95 hover:shadow-[0_14px_35px_rgba(203,189,255,0.24)]"
+                  className="group flex flex-col overflow-hidden rounded-3xl border border-[#d8e2eb] bg-white shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#1282a2] hover:shadow-md"
                 >
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff]">
+                  <div className="relative h-48 overflow-hidden border-b border-[#e2e8f0] bg-[#f4f7fa]">
                     {service.image ? (
                       <img
                         src={service.image}
@@ -256,7 +257,7 @@ const ProviderServices = () => {
                       />
                     ) : (
                       <div className="flex h-full items-center justify-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-white/80 bg-white/75 text-[#8b7cc8] shadow-sm backdrop-blur-xl">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#d8e2eb] bg-white text-[#034078] shadow-xs">
                           <Wrench className="h-8 w-8" />
                         </div>
                       </div>
@@ -271,34 +272,34 @@ const ProviderServices = () => {
 
                   {/* Details */}
                   <div className="flex flex-1 flex-col p-6">
-                    <span className="inline-block w-fit rounded-full border border-[#deabff]/65 bg-linear-to-r from-[#f6ebff]/90 via-[#f4f1ff]/90 to-[#ebf6ff]/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-slate-800 shadow-xs">
+                    <span className="inline-block w-fit rounded-lg border border-[#1282a2]/25 bg-[#1282a2]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#034078]">
                       {service.categoryId?.name || "Uncategorized"}
                     </span>
 
-                    <h2 className="mt-3 text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
+                    <h2 className="mt-3 text-lg font-extrabold tracking-tight text-[#0a1128] transition-colors group-hover:text-[#034078] sm:text-xl">
                       {service.name}
                     </h2>
 
-                    <p className="mt-2 line-clamp-2 min-h-10 text-xs font-medium leading-5 text-slate-500 sm:text-sm">
+                    <p className="mt-2 line-clamp-2 min-h-10 text-xs font-medium leading-5 text-[#33415c] sm:text-sm">
                       {service.description || "No description provided."}
                     </p>
 
-                    <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#bfcaff]/25 pt-4">
+                    <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#e2e8f0] pt-4">
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-[#64748b]">
                           Price
                         </p>
-                        <p className="mt-0.5 text-sm font-extrabold text-slate-900">
+                        <p className="mt-0.5 text-sm font-extrabold text-[#0a1128]">
                           {formatServicePrice(service)}
                         </p>
                       </div>
 
                       <div className="text-right">
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-[#64748b]">
                           Duration
                         </p>
-                        <p className="mt-0.5 inline-flex items-center gap-1 text-sm font-bold text-slate-800">
-                          <Clock className="h-3.5 w-3.5 text-[#7c56a8]" />
+                        <p className="mt-0.5 inline-flex items-center gap-1 text-sm font-bold text-[#0a1128]">
+                          <Clock className="h-3.5 w-3.5 text-[#1282a2]" />
                           <span>{service.durationMinutes} min</span>
                         </p>
                       </div>
@@ -308,9 +309,9 @@ const ProviderServices = () => {
                     <div className="mt-5 flex gap-2.5 pt-1">
                       <Link
                         to={`/provider/services/${service._id}/edit`}
-                        className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-[#bfcaff]/55 bg-white/85 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-xs transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-95 sm:text-sm"
+                        className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2.5 text-xs font-bold text-[#0a1128] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] sm:text-sm"
                       >
-                        <Pencil className="h-3.5 w-3.5 text-[#7c56a8]" />
+                        <Pencil className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Edit</span>
                       </Link>
 
@@ -318,10 +319,10 @@ const ProviderServices = () => {
                         type="button"
                         disabled={Boolean(updatingId)}
                         onClick={() => handleStatusChange(service)}
-                        className={`inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-all active:scale-95 disabled:opacity-50 sm:text-sm ${
+                        className={`inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-colors disabled:pointer-events-none disabled:opacity-50 sm:text-sm ${
                           service.isActive
-                            ? "bg-rose-600 shadow-rose-600/20 hover:bg-rose-700"
-                            : "bg-emerald-600 shadow-emerald-600/20 hover:bg-emerald-700"
+                            ? "bg-red-600 hover:bg-red-700"
+                            : "bg-emerald-600 hover:bg-emerald-700"
                         }`}
                       >
                         {isUpdating ? (

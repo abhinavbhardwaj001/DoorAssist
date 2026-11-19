@@ -6,23 +6,27 @@ const AdminPageHeader = ({
   subtitle,
   action,
 }) => (
-  <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-        <ShieldCheck className="h-3.5 w-3.5 text-[#a575bf]" />
-        <span>{badge}</span>
+  <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+          <ShieldCheck className="h-3.5 w-3.5 text-[#1282a2]" />
+          <span>{badge}</span>
+        </div>
+
+        <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
+          {title}
+        </h1>
+
+        {subtitle && (
+          <p className="mt-1.5 text-sm font-medium text-[#33415c]">
+            {subtitle}
+          </p>
+        )}
       </div>
 
-      <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-        {title}
-      </h1>
-
-      {subtitle && (
-        <p className="mt-1.5 text-sm font-medium text-slate-500">{subtitle}</p>
-      )}
+      {action && <div className="w-full sm:w-auto">{action}</div>}
     </div>
-
-    {action && <div className="w-full sm:w-auto">{action}</div>}
   </div>
 );
 

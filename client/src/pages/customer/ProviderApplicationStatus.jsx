@@ -10,7 +10,6 @@ import {
   ArrowLeft,
   ArrowUpRight,
   FileText,
-  Sparkles,
   ClipboardList,
 } from "lucide-react";
 import useAuth from "../../hooks/useAuth";
@@ -52,13 +51,13 @@ const ProviderApplicationStatus = () => {
 
   if (loading) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#fefcfb] px-4 py-10 sm:px-6 lg:px-8">
         <div
           role="status"
           className="mx-auto max-w-4xl space-y-6 animate-pulse"
         >
-          <div className="h-8 w-56 rounded-full bg-white/75" />
-          <div className="h-80 rounded-4xl border border-white/70 bg-white/65" />
+          <div className="h-32 rounded-3xl border border-[#d8e2eb] bg-white" />
+          <div className="h-80 rounded-3xl border border-[#d8e2eb] bg-white" />
           <span className="sr-only">Loading application...</span>
         </div>
       </div>
@@ -69,20 +68,20 @@ const ProviderApplicationStatus = () => {
     formatLabel(provider?.verificationStatus) || "Pending";
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        {/* Page Header */}
-        <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-            <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
+        {/* Page Header Card */}
+        <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+            <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
             <span>Provider Application</span>
           </div>
 
-          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
             Application Status
           </h1>
 
-          <p className="mt-1.5 text-sm font-medium text-slate-500">
+          <p className="mt-1.5 text-sm font-medium text-[#33415c]">
             Track the verification status of your DoorAssist provider
             application.
           </p>
@@ -97,7 +96,7 @@ const ProviderApplicationStatus = () => {
         ) : !provider ? (
           <div className="mt-8">
             <EmptyState
-              icon={<ClipboardList className="h-7 w-7 text-[#7c56a8]" />}
+              icon={<ClipboardList className="h-7 w-7 text-[#034078]" />}
               title="No Application Found"
               message="You haven't submitted a provider application yet."
               actionLabel={
@@ -111,15 +110,10 @@ const ProviderApplicationStatus = () => {
         ) : (
           <div className="mt-8 space-y-6">
             {/* Application Summary Card */}
-            <section className="relative overflow-hidden rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-8">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#e4a5ff]/18 blur-3xl"
-              />
-
-              <div className="relative z-10 flex flex-wrap items-center justify-between gap-5">
+            <section className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+              <div className="flex flex-wrap items-center justify-between gap-5">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-3xl border border-white/80 bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] shadow-[0_6px_20px_rgba(203,189,255,0.22)]">
+                  <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#d8e2eb] bg-[#f4f7fa]">
                     {provider.profileImage ? (
                       <img
                         src={provider.profileImage}
@@ -127,17 +121,17 @@ const ProviderApplicationStatus = () => {
                         className="h-full w-full object-cover"
                       />
                     ) : (
-                      <Store className="h-8 w-8 text-[#7c56a8]" />
+                      <Store className="h-8 w-8 text-[#034078]" />
                     )}
                   </div>
 
                   <div>
-                    <h2 className="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
+                    <h2 className="text-xl font-extrabold tracking-tight text-[#0a1128] sm:text-2xl">
                       {provider.businessName}
                     </h2>
 
-                    <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 sm:text-sm">
-                      <Briefcase className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-[#33415c] sm:text-sm">
+                      <Briefcase className="h-3.5 w-3.5 text-[#1282a2]" />
                       <span>
                         {provider.experienceYears ?? 0} years of experience
                       </span>
@@ -149,21 +143,21 @@ const ProviderApplicationStatus = () => {
               </div>
 
               {/* Business Description */}
-              <div className="relative z-10 mt-7 border-t border-[#bfcaff]/30 pt-6">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  <FileText className="h-3.5 w-3.5 text-[#7c56a8]" />
+              <div className="mt-7 border-t border-[#e2e8f0] pt-6">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                  <FileText className="h-3.5 w-3.5 text-[#1282a2]" />
                   <span>Business Description</span>
                 </div>
 
-                <p className="mt-3 whitespace-pre-line rounded-2xl border border-[#bfcaff]/40 bg-white/65 p-4 text-sm font-medium leading-7 text-slate-700">
+                <p className="mt-3 whitespace-pre-line rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-4 text-sm font-medium leading-7 text-[#33415c]">
                   {provider.description || "No description provided."}
                 </p>
               </div>
 
               {/* Service Areas */}
-              <div className="relative z-10 mt-6">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-                  <MapPin className="h-3.5 w-3.5 text-[#7c56a8]" />
+              <div className="mt-6">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                  <MapPin className="h-3.5 w-3.5 text-[#1282a2]" />
                   <span>Service Areas</span>
                 </div>
 
@@ -171,9 +165,9 @@ const ProviderApplicationStatus = () => {
                   {provider.serviceAreas?.map((area, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-[#deabff]/65 bg-linear-to-r from-[#f6ebff]/90 via-[#f4f1ff]/90 to-[#ebf6ff]/90 px-3.5 py-1.5 text-xs font-bold text-slate-800 shadow-xs"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold text-[#0a1128]"
                     >
-                      <MapPin className="h-3 w-3 text-[#7c56a8]" />
+                      <MapPin className="h-3.5 w-3.5 text-[#1282a2]" />
                       <span>
                         {area.city}, {area.state}
                       </span>
@@ -185,17 +179,17 @@ const ProviderApplicationStatus = () => {
 
             {/* Verification Result Banners */}
             {provider.verificationStatus === "pending" && (
-              <section className="flex items-start gap-4 rounded-3xl border border-amber-200/80 bg-amber-50/85 p-6 shadow-xs backdrop-blur-xl">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-amber-700 ring-1 ring-inset ring-amber-200">
+              <section className="flex items-start gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-white text-amber-700">
                   <Clock className="h-5 w-5" />
                 </div>
 
                 <div>
-                  <h3 className="text-base font-extrabold text-amber-900 sm:text-lg">
+                  <h3 className="text-base font-extrabold text-amber-950 sm:text-lg">
                     Awaiting Admin Verification
                   </h3>
 
-                  <p className="mt-1.5 text-sm font-medium leading-6 text-amber-800">
+                  <p className="mt-1.5 text-sm font-medium leading-6 text-amber-900">
                     Your application has been submitted successfully. An
                     administrator will review your information shortly.
                   </p>
@@ -204,17 +198,17 @@ const ProviderApplicationStatus = () => {
             )}
 
             {provider.verificationStatus === "approved" && (
-              <section className="flex items-start gap-4 rounded-3xl border border-emerald-200/80 bg-emerald-50/85 p-6 shadow-xs backdrop-blur-xl">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700 ring-1 ring-inset ring-emerald-200">
+              <section className="flex items-start gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-white text-emerald-700">
                   <CheckCircle2 className="h-5 w-5" />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-base font-extrabold text-emerald-900 sm:text-lg">
+                  <h3 className="text-base font-extrabold text-emerald-950 sm:text-lg">
                     Application Approved
                   </h3>
 
-                  <p className="mt-1.5 text-sm font-medium leading-6 text-emerald-800">
+                  <p className="mt-1.5 text-sm font-medium leading-6 text-emerald-900">
                     Your application has been approved. You can now access
                     provider features once your account session reflects the
                     provider role.
@@ -223,7 +217,7 @@ const ProviderApplicationStatus = () => {
                   {user?.role === "provider" && (
                     <Link
                       to="/provider/dashboard"
-                      className="mt-5 inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white shadow-md shadow-emerald-600/20 transition-all hover:bg-emerald-700 active:scale-[0.98]"
+                      className="mt-5 inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-emerald-700"
                     >
                       <span>Go to Provider Dashboard</span>
                       <ArrowUpRight className="h-4 w-4" />
@@ -231,7 +225,7 @@ const ProviderApplicationStatus = () => {
                   )}
 
                   {user?.role === "customer" && (
-                    <p className="mt-3 rounded-xl border border-emerald-200/70 bg-white/75 px-4 py-2.5 text-xs font-semibold text-emerald-900 sm:text-sm">
+                    <p className="mt-3 rounded-xl border border-emerald-200 bg-white px-4 py-2.5 text-xs font-semibold text-emerald-900 sm:text-sm">
                       If your account was just approved, log out and log in
                       again to refresh your account role.
                     </p>
@@ -241,27 +235,27 @@ const ProviderApplicationStatus = () => {
             )}
 
             {provider.verificationStatus === "rejected" && (
-              <section className="flex items-start gap-4 rounded-3xl border border-rose-200/80 bg-rose-50/85 p-6 shadow-xs backdrop-blur-xl">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-rose-100 text-rose-700 ring-1 ring-inset ring-rose-200">
+              <section className="flex items-start gap-4 rounded-2xl border border-red-200 bg-red-50 p-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-red-200 bg-white text-red-700">
                   <XCircle className="h-5 w-5" />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-base font-extrabold text-rose-900 sm:text-lg">
+                  <h3 className="text-base font-extrabold text-red-950 sm:text-lg">
                     Application Rejected
                   </h3>
 
-                  <p className="mt-1.5 text-sm font-medium text-rose-800">
+                  <p className="mt-1.5 text-sm font-medium text-red-900">
                     Your application was not approved by the verification team.
                   </p>
 
                   {provider.rejectionReason && (
-                    <div className="mt-4 rounded-2xl border border-rose-200/80 bg-white/85 p-4">
-                      <p className="text-xs font-bold uppercase tracking-wider text-rose-500">
+                    <div className="mt-4 rounded-xl border border-red-200 bg-white p-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-red-700">
                         Rejection Reason
                       </p>
 
-                      <p className="mt-1.5 text-sm font-semibold text-rose-800">
+                      <p className="mt-1.5 text-sm font-semibold text-red-900">
                         {provider.rejectionReason}
                       </p>
                     </div>
@@ -274,9 +268,9 @@ const ProviderApplicationStatus = () => {
             <div className="pt-2">
               <Link
                 to={dashboardPath}
-                className="inline-flex items-center gap-2 rounded-xl border border-[#bfcaff]/55 bg-white/80 px-6 py-3 text-sm font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-[0.98]"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-6 py-3 text-sm font-bold text-[#0a1128] shadow-xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078]"
               >
-                <ArrowLeft className="h-4 w-4 text-[#7c56a8]" />
+                <ArrowLeft className="h-4 w-4 text-[#1282a2]" />
                 <span>Back to Dashboard</span>
               </Link>
             </div>

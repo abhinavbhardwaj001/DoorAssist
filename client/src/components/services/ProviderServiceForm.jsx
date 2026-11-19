@@ -122,6 +122,7 @@ const ProviderServiceForm = ({
       setGeneratingAi(false);
     }
   };
+
   const handleImageChange = (e) => {
     const file = e.target.files?.[0];
 
@@ -203,34 +204,25 @@ const ProviderServiceForm = ({
   };
 
   const inputClass =
-    "mt-2 w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30";
+    "mt-2 w-full rounded-xl border border-[#cbd5e1] bg-white px-4 py-3 text-sm font-medium text-[#0a1128] placeholder:text-[#64748b] shadow-2xs transition-colors outline-none focus:border-[#1282a2] focus:ring-3 focus:ring-[#1282a2]/20";
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative overflow-hidden rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_8px_40px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8"
+      className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-[#acdcff]/25 blur-3xl"
-      />
-
-      <div className="relative z-10 space-y-8">
+      <div className="space-y-8">
         {/* Service Information */}
         <section>
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
               <Layers className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+              <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
                 Service Information
               </h2>
-              <p className="text-xs font-medium text-slate-500">
+              <p className="text-xs font-medium text-[#33415c]">
                 Choose a category and describe what your service includes.
               </p>
             </div>
@@ -240,9 +232,9 @@ const ProviderServiceForm = ({
             <div>
               <label
                 htmlFor="categoryId"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
               >
-                Category <span className="text-rose-500">*</span>
+                Category <span className="text-red-600">*</span>
               </label>
 
               <div className="relative">
@@ -273,16 +265,16 @@ const ProviderServiceForm = ({
                     )}
                 </select>
 
-                <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
               </div>
             </div>
 
             <div>
               <label
                 htmlFor="name"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
               >
-                Service Name <span className="text-rose-500">*</span>
+                Service Name <span className="text-red-600">*</span>
               </label>
 
               <input
@@ -302,7 +294,7 @@ const ProviderServiceForm = ({
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <label
                   htmlFor="description"
-                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
                 >
                   Description
                 </label>
@@ -312,7 +304,7 @@ const ProviderServiceForm = ({
                     type="button"
                     onClick={handleGenerateDescription}
                     disabled={generatingAi || submitting}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-[#deabff]/70 bg-[#f6ebff]/90 px-3 py-1 text-xs font-extrabold text-[#7c56a8] shadow-2xs transition hover:bg-white disabled:pointer-events-none disabled:opacity-55"
+                    className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-[#1282a2]/35 bg-[#f4f7fa] px-3.5 py-1 text-xs font-extrabold text-[#034078] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#034078] hover:text-white disabled:pointer-events-none disabled:opacity-55"
                   >
                     {generatingAi ? (
                       <>
@@ -327,7 +319,7 @@ const ProviderServiceForm = ({
                     )}
                   </button>
 
-                  <span className="text-xs font-semibold text-slate-400">
+                  <span className="text-xs font-semibold text-[#64748b]">
                     {formData.description.length}/1000
                   </span>
                 </div>
@@ -348,16 +340,16 @@ const ProviderServiceForm = ({
         </section>
 
         {/* Pricing and Duration */}
-        <section className="border-t border-[#bfcaff]/30 pt-8">
+        <section className="border-t border-[#e2e8f0] pt-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
               <Tag className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+              <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
                 Pricing and Duration
               </h2>
-              <p className="text-xs font-medium text-slate-500">
+              <p className="text-xs font-medium text-[#33415c]">
                 Set your rate structure and estimated service time.
               </p>
             </div>
@@ -367,9 +359,9 @@ const ProviderServiceForm = ({
             <div>
               <label
                 htmlFor="pricingType"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
               >
-                Pricing Type <span className="text-rose-500">*</span>
+                Pricing Type <span className="text-red-600">*</span>
               </label>
 
               <div className="relative">
@@ -386,7 +378,7 @@ const ProviderServiceForm = ({
                   <option value="on_request">On Request</option>
                 </select>
 
-                <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
               </div>
             </div>
 
@@ -394,13 +386,13 @@ const ProviderServiceForm = ({
               <div>
                 <label
                   htmlFor="price"
-                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
                 >
-                  Price (₹) <span className="text-rose-500">*</span>
+                  Price (₹) <span className="text-red-600">*</span>
                 </label>
 
                 <div className="relative">
-                  <IndianRupee className="pointer-events-none absolute left-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-[#9687c7]" />
+                  <IndianRupee className="pointer-events-none absolute left-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
 
                   <input
                     id="price"
@@ -421,13 +413,13 @@ const ProviderServiceForm = ({
             <div>
               <label
                 htmlFor="durationMinutes"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
               >
-                Duration (Minutes) <span className="text-rose-500">*</span>
+                Duration (Minutes) <span className="text-red-600">*</span>
               </label>
 
               <div className="relative">
-                <Clock className="pointer-events-none absolute left-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-[#7195c2]" />
+                <Clock className="pointer-events-none absolute left-3.5 top-1/2 mt-1 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
 
                 <input
                   id="durationMinutes"
@@ -445,8 +437,8 @@ const ProviderServiceForm = ({
           </div>
 
           {formData.pricingType === "on_request" && (
-            <div className="mt-5 flex items-start gap-2.5 rounded-2xl border border-[#bfcaff]/60 bg-[#acdcff]/20 p-4 text-xs font-semibold text-slate-800 backdrop-blur-md sm:text-sm">
-              <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#7195c2]" />
+            <div className="mt-5 flex items-start gap-2.5 rounded-2xl border border-[#1282a2]/30 border-l-4 border-l-[#1282a2] bg-[#f4f7fa] p-4 text-xs font-semibold text-[#0a1128] sm:text-sm">
+              <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#1282a2]" />
               <span>
                 Customers will see &ldquo;Price on request&rdquo; instead of a
                 fixed amount. Your current booking API does not allow direct
@@ -457,23 +449,23 @@ const ProviderServiceForm = ({
         </section>
 
         {/* Image */}
-        <section className="border-t border-[#bfcaff]/30 pt-8">
+        <section className="border-t border-[#e2e8f0] pt-8">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
               <ImagePlus className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+              <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
                 Service Image
               </h2>
-              <p className="text-xs font-medium text-slate-500">
+              <p className="text-xs font-medium text-[#33415c]">
                 Upload an optional image that represents your service.
               </p>
             </div>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-[180px_1fr] sm:items-center">
-            <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-3xl border border-white/80 bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] shadow-[0_8px_25px_rgba(203,189,255,0.22)]">
+            <div className="flex h-44 items-center justify-center overflow-hidden rounded-3xl border border-[#d8e2eb] bg-[#f8fafc] shadow-2xs">
               {preview ? (
                 <img
                   src={preview}
@@ -481,16 +473,16 @@ const ProviderServiceForm = ({
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/80 bg-white/75 text-[#8b7cc8] shadow-xs backdrop-blur-xl">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d8e2eb] bg-white text-[#034078] shadow-2xs">
                   <Wrench className="h-6 w-6" />
                 </div>
               )}
             </div>
 
-            <div className="rounded-2xl border border-[#bfcaff]/40 bg-white/60 p-4 backdrop-blur-md sm:p-5">
+            <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-4 sm:p-5">
               <label
                 htmlFor="serviceImage"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#64748b]"
               >
                 Choose Image
               </label>
@@ -500,12 +492,13 @@ const ProviderServiceForm = ({
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-                className="mt-3 block w-full text-xs font-medium text-slate-600 file:mr-4 file:cursor-pointer file:rounded-xl file:border-0 file:bg-linear-to-r file:from-[#e4a5ff] file:via-[#cbbdff] file:to-[#acdcff] file:px-4 file:py-2.5 file:text-xs file:font-bold file:text-slate-900 file:shadow-xs file:transition-all hover:file:brightness-105 sm:text-sm"
+                className="mt-3 block w-full text-xs font-medium text-[#33415c] file:mr-4 file:cursor-pointer file:rounded-xl file:border file:border-[#cbd5e1] file:bg-white file:px-4 file:py-2.5 file:text-xs file:font-bold file:text-[#0a1128] file:shadow-2xs file:transition-colors hover:file:border-[#034078] hover:file:bg-[#f4f7fa] hover:file:text-[#034078] sm:text-sm"
               />
 
               {image && (
-                <p className="mt-3 truncate text-xs font-semibold text-slate-500">
-                  Selected: <span className="text-slate-800">{image.name}</span>
+                <p className="mt-3 truncate text-xs font-semibold text-[#64748b]">
+                  Selected:{" "}
+                  <span className="font-bold text-[#0a1128]">{image.name}</span>
                 </p>
               )}
             </div>
@@ -513,11 +506,11 @@ const ProviderServiceForm = ({
         </section>
 
         {/* Submit */}
-        <div className="flex flex-wrap items-center justify-end gap-4 border-t border-[#bfcaff]/30 pt-6">
+        <div className="flex flex-wrap items-center justify-end gap-4 border-t border-[#e2e8f0] pt-6">
           <button
             type="submit"
             disabled={submitting}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-8 py-3.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99] disabled:pointer-events-none disabled:opacity-55 sm:w-auto"
+            className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-8 py-3.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] disabled:pointer-events-none disabled:opacity-55 sm:w-auto"
           >
             {submitting ? (
               <>

@@ -35,9 +35,10 @@ const Navbar = () => {
   const desktopLinkClass = ({ isActive }) =>
     `group relative py-2 text-sm transition-colors ${
       isActive
-        ? "font-bold text-slate-900"
-        : "font-semibold text-slate-600 hover:text-slate-900"
+        ? "font-extrabold text-[#034078]"
+        : "font-semibold text-[#33415c] hover:text-[#0a1128]"
     }`;
+
   const handleLogout = async () => {
     if (loggingOut) return;
 
@@ -56,16 +57,16 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/70 bg-white/75 shadow-[0_4px_30px_rgba(203,189,255,0.12)] backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-[#d8e2eb] bg-white shadow-2xs">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo */}
         <Link
           to="/"
           onClick={() => setMenuOpen(false)}
-          className="inline-flex items-center gap-2 text-2xl font-extrabold tracking-tight text-slate-800 transition-colors hover:text-slate-600"
+          className="inline-flex items-center gap-2 text-2xl font-extrabold tracking-tight text-[#0a1128] transition-colors hover:text-[#034078]"
         >
           <span>DoorAssist</span>
-          <span className="h-2 w-2 rounded-full bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff]"></span>
+          <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -85,7 +86,7 @@ const Navbar = () => {
                   <span>{link.label}</span>
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-x-0 bottom-0 h-[2.5px] origin-left rounded-full bg-linear-to-r from-[#a575bf] via-[#8b7cc8] to-[#5b9bd5] transition-transform duration-300 ease-out ${
+                    className={`absolute inset-x-0 bottom-0 h-[2.5px] origin-left rounded-full bg-[#1282a2] transition-transform duration-300 ease-out ${
                       isActive
                         ? "scale-x-100"
                         : "scale-x-0 group-hover:scale-x-100"
@@ -101,15 +102,15 @@ const Navbar = () => {
         <div className="hidden items-center gap-3 md:flex">
           {user ? (
             <>
-              <span className="max-w-36 truncate rounded-full border border-[#bfcaff]/40 bg-white/60 px-3.5 py-1.5 text-xs font-bold text-slate-700">
+              <span className="max-w-36 truncate rounded-full border border-[#d8e2eb] bg-[#f8fafc] px-3.5 py-1.5 text-xs font-bold text-[#0a1128]">
                 Hi, {user.name?.split(" ")[0]}
               </span>
 
               <Link
                 to={dashboardPath}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-[#bfcaff]/50 bg-white/75 px-4 py-2 text-sm font-bold text-slate-800 shadow-xs transition-all hover:border-[#deabff] hover:bg-linear-to-r hover:from-[#e4a5ff]/15 hover:to-[#acdcff]/15 active:scale-[0.98]"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2 text-sm font-bold text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078]"
               >
-                <LayoutDashboard className="h-4 w-4 text-slate-600" />
+                <LayoutDashboard className="h-4 w-4 text-[#1282a2]" />
                 <span>Dashboard</span>
               </Link>
 
@@ -117,7 +118,7 @@ const Navbar = () => {
                 type="button"
                 onClick={handleLogout}
                 disabled={loggingOut}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-4 py-2 text-sm font-bold text-slate-900 shadow-md shadow-[#cbbdff]/30 transition-all hover:brightness-105 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-bold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100 hover:text-red-800 disabled:pointer-events-none disabled:opacity-60"
               >
                 <LogOut className="h-4 w-4" />
                 <span>{loggingOut ? "Logging out..." : "Logout"}</span>
@@ -127,14 +128,14 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="rounded-xl px-4 py-2 text-sm font-bold text-slate-700 transition-colors hover:bg-white/70 hover:text-slate-900"
+                className="rounded-xl border border-[#cbd5e1] bg-white px-4 py-2 text-sm font-bold text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078]"
               >
                 Login
               </Link>
 
               <Link
                 to="/register"
-                className="group inline-flex items-center gap-1.5 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-5 py-2.5 text-sm font-bold text-slate-900 shadow-md shadow-[#cbbdff]/30 transition-all hover:brightness-105 active:scale-[0.98]"
+                className="group inline-flex items-center gap-1.5 rounded-xl bg-[#034078] px-5 py-2.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54]"
               >
                 <span>Get Started</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -150,7 +151,7 @@ const Navbar = () => {
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#bfcaff]/50 bg-white/75 text-slate-700 shadow-xs transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-95 md:hidden"
+          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-[#cbd5e1] bg-[#f8fafc] text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] md:hidden"
         >
           {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -171,7 +172,7 @@ const Navbar = () => {
       {error && (
         <div
           role="alert"
-          className="flex items-center justify-center gap-2 border-t border-red-200/80 bg-red-50/90 px-4 py-2.5 text-center text-xs font-bold text-red-700 backdrop-blur-md sm:text-sm"
+          className="flex items-center justify-center gap-2 border-t border-red-200 bg-red-50 px-4 py-2.5 text-center text-xs font-bold text-red-900 sm:text-sm"
         >
           <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
           <span>{error}</span>

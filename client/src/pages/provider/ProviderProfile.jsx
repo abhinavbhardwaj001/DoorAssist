@@ -10,7 +10,6 @@ import {
   Save,
   Loader2,
   AlertCircle,
-  Sparkles,
 } from "lucide-react";
 import {
   getMyProviderProfile,
@@ -220,17 +219,17 @@ const ProviderProfile = () => {
   };
 
   const inputClass =
-    "mt-2 w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 px-4 py-3 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30 disabled:cursor-not-allowed disabled:opacity-60";
+    "mt-2 w-full rounded-xl border border-[#cbd5e1] bg-[#fefcfb] px-4 py-3 text-sm font-medium text-[#0a1128] placeholder:text-[#64748b] transition-all outline-none focus:border-[#1282a2] focus:bg-white focus:ring-3 focus:ring-[#1282a2]/20 disabled:cursor-not-allowed disabled:opacity-60";
 
   if (loading) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#fefcfb] px-4 py-10 sm:px-6 lg:px-8">
         <div
           role="status"
           className="mx-auto max-w-4xl space-y-6 animate-pulse"
         >
-          <div className="h-32 rounded-4xl border border-white/70 bg-white/65" />
-          <div className="h-96 rounded-4xl border border-white/70 bg-white/65" />
+          <div className="h-32 rounded-3xl border border-[#d8e2eb] bg-white" />
+          <div className="h-96 rounded-3xl border border-[#d8e2eb] bg-white" />
           <span className="sr-only">Loading profile...</span>
         </div>
       </div>
@@ -239,7 +238,7 @@ const ProviderProfile = () => {
 
   if (fetchError || !provider) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#fefcfb] px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <FetchErrorBanner
             message={fetchError || "Provider profile not found."}
@@ -254,34 +253,29 @@ const ProviderProfile = () => {
     formatLabel(provider.verificationStatus) || "Pending";
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        {/* Header */}
-        <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-            <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
+        {/* Page Header Card */}
+        <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+            <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
             <span>Provider Portal</span>
           </div>
 
-          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
             Business Profile
           </h1>
 
-          <p className="mt-1.5 text-sm font-medium text-slate-500">
+          <p className="mt-1.5 text-sm font-medium text-[#33415c]">
             Manage your business details, branding, and service areas.
           </p>
         </div>
 
         {/* Profile Summary Card */}
-        <section className="relative mt-7 overflow-hidden rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-7">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-          />
-
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-5">
+        <section className="mt-7 rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-7">
+          <div className="flex flex-wrap items-center justify-between gap-5">
             <div className="flex items-center gap-4 sm:gap-5">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-3xl border border-white/80 bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] shadow-[0_6px_20px_rgba(203,189,255,0.22)]">
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#d8e2eb] bg-[#f4f7fa]">
                 {imagePreview ? (
                   <img
                     src={imagePreview}
@@ -289,17 +283,17 @@ const ProviderProfile = () => {
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <Store className="h-8 w-8 text-[#7c56a8]" />
+                  <Store className="h-8 w-8 text-[#034078]" />
                 )}
               </div>
 
               <div>
-                <h2 className="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
+                <h2 className="text-xl font-extrabold tracking-tight text-[#0a1128] sm:text-2xl">
                   {provider.businessName}
                 </h2>
 
-                <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 sm:text-sm">
-                  <Briefcase className="h-3.5 w-3.5 text-[#7c56a8]" />
+                <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-[#33415c] sm:text-sm">
+                  <Briefcase className="h-3.5 w-3.5 text-[#1282a2]" />
                   <span>
                     {provider.experienceYears ?? 0} years of experience
                   </span>
@@ -312,8 +306,8 @@ const ProviderProfile = () => {
 
           {provider.verificationStatus === "rejected" &&
             provider.rejectionReason && (
-              <div className="relative z-10 mt-5 flex items-start gap-2.5 rounded-2xl border border-rose-200/80 bg-rose-50/85 p-4 text-xs font-semibold text-rose-800 sm:text-sm">
-                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" />
+              <div className="mt-5 flex items-start gap-2.5 rounded-2xl border border-red-200 bg-red-50 p-4 text-xs font-semibold text-red-800 sm:text-sm">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
                 <span>Rejection reason: {provider.rejectionReason}</span>
               </div>
             )}
@@ -322,15 +316,15 @@ const ProviderProfile = () => {
         {/* Edit Form */}
         <form
           onSubmit={handleSubmit}
-          className="mt-7 space-y-8 rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-8"
+          className="mt-7 space-y-8 rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8"
         >
           {/* Business Information */}
           <section>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
-                <FileText className="h-4 w-4" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
+                <FileText className="h-4 w-4 text-[#1282a2]" />
               </div>
-              <h2 className="text-lg font-extrabold text-slate-900">
+              <h2 className="text-lg font-extrabold text-[#0a1128]">
                 Business Information
               </h2>
             </div>
@@ -339,7 +333,7 @@ const ProviderProfile = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="businessName"
-                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                 >
                   Business Name *
                 </label>
@@ -358,7 +352,7 @@ const ProviderProfile = () => {
               <div>
                 <label
                   htmlFor="experienceYears"
-                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                 >
                   Experience (Years) *
                 </label>
@@ -380,11 +374,11 @@ const ProviderProfile = () => {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="description"
-                    className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                    className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                   >
                     Description
                   </label>
-                  <span className="text-xs font-semibold text-slate-400">
+                  <span className="text-xs font-semibold text-[#64748b]">
                     {formData.description.length}/1000
                   </span>
                 </div>
@@ -403,17 +397,17 @@ const ProviderProfile = () => {
           </section>
 
           {/* Service Areas */}
-          <section className="border-t border-[#bfcaff]/30 pt-7">
+          <section className="border-t border-[#e2e8f0] pt-7">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
-                  <MapPin className="h-4 w-4" />
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
+                  <MapPin className="h-4 w-4 text-[#1282a2]" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-extrabold text-slate-900">
+                  <h2 className="text-lg font-extrabold text-[#0a1128]">
                     Service Areas
                   </h2>
-                  <p className="text-xs font-medium text-slate-500">
+                  <p className="text-xs font-medium text-[#33415c]">
                     Add the cities and states where you offer services.
                   </p>
                 </div>
@@ -422,9 +416,9 @@ const ProviderProfile = () => {
               <button
                 type="button"
                 onClick={addArea}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-[#bfcaff]/55 bg-white/85 px-4 py-2 text-xs font-bold text-[#7c56a8] shadow-xs transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-95"
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-xl border border-[#cbd5e1] bg-white px-4 py-2 text-xs font-bold text-[#034078] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#001f54]"
               >
-                <Plus className="h-3.5 w-3.5" />
+                <Plus className="h-3.5 w-3.5 text-[#1282a2]" />
                 <span>Add Area</span>
               </button>
             </div>
@@ -433,12 +427,12 @@ const ProviderProfile = () => {
               {formData.serviceAreas.map((area, index) => (
                 <div
                   key={area.id}
-                  className="flex flex-col gap-3 rounded-2xl border border-[#bfcaff]/40 bg-white/60 p-4 sm:flex-row sm:items-end"
+                  className="flex flex-col gap-3 rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-4 sm:flex-row sm:items-end"
                 >
                   <div className="flex-1">
                     <label
                       htmlFor={`city-${area.id}`}
-                      className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                      className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                     >
                       City {index + 1} *
                     </label>
@@ -459,7 +453,7 @@ const ProviderProfile = () => {
                   <div className="flex-1">
                     <label
                       htmlFor={`state-${area.id}`}
-                      className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                      className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
                     >
                       State {index + 1} *
                     </label>
@@ -483,7 +477,7 @@ const ProviderProfile = () => {
                       onClick={() => removeArea(area.id)}
                       aria-label={`Remove area ${index + 1}`}
                       title="Remove area"
-                      className="inline-flex h-11.5 w-full items-center justify-center gap-1.5 rounded-2xl border border-red-200/80 bg-red-50/75 px-3.5 text-xs font-bold text-red-600 transition-all hover:border-red-300 hover:bg-red-100 hover:text-red-700 active:scale-95 sm:w-11.5 sm:shrink-0 sm:px-0"
+                      className="inline-flex h-11.5 w-full cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-red-200 bg-red-50 px-3.5 text-xs font-bold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100 sm:w-11.5 sm:shrink-0 sm:px-0"
                     >
                       <Trash2 className="h-4 w-4" />
                       <span className="sm:hidden">Remove Area</span>
@@ -495,16 +489,16 @@ const ProviderProfile = () => {
           </section>
 
           {/* Profile Image Upload */}
-          <section className="border-t border-[#bfcaff]/30 pt-7">
+          <section className="border-t border-[#e2e8f0] pt-7">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
-                <ImagePlus className="h-4 w-4" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
+                <ImagePlus className="h-4 w-4 text-[#1282a2]" />
               </div>
               <div>
-                <h2 className="text-lg font-extrabold text-slate-900">
+                <h2 className="text-lg font-extrabold text-[#0a1128]">
                   Profile Image
                 </h2>
-                <p className="text-xs font-medium text-slate-500">
+                <p className="text-xs font-medium text-[#33415c]">
                   Upload a new logo or photo to replace your current image.
                 </p>
               </div>
@@ -515,11 +509,11 @@ const ProviderProfile = () => {
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-                className="block w-full rounded-2xl border border-dashed border-[#bfcaff]/70 bg-white/60 p-3 text-xs font-medium text-slate-600 transition-colors hover:border-[#deabff] file:mr-4 file:cursor-pointer file:rounded-xl file:border-0 file:bg-linear-to-r file:from-[#e4a5ff]/40 file:via-[#cbbdff]/40 file:to-[#acdcff]/40 file:px-4 file:py-2 file:text-xs file:font-bold file:text-slate-900 file:transition hover:file:brightness-105 sm:text-sm"
+                className="block w-full rounded-xl border border-dashed border-[#cbd5e1] bg-[#f8fafc] p-3 text-xs font-medium text-[#33415c] transition-colors hover:border-[#1282a2] file:mr-4 file:cursor-pointer file:rounded-lg file:border-0 file:bg-[#034078] file:px-4 file:py-2 file:text-xs file:font-bold file:text-white file:transition-colors hover:file:bg-[#001f54] sm:text-sm"
               />
 
               {profileImage && (
-                <p className="mt-2.5 text-xs font-semibold text-[#7c56a8]">
+                <p className="mt-2.5 text-xs font-bold text-[#034078]">
                   Selected: {profileImage.name}
                 </p>
               )}
@@ -527,11 +521,11 @@ const ProviderProfile = () => {
           </section>
 
           {/* Submit */}
-          <div className="flex justify-end border-t border-[#bfcaff]/30 pt-6">
+          <div className="flex justify-end border-t border-[#e2e8f0] pt-6">
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-8 py-3.5 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99] disabled:pointer-events-none disabled:opacity-60 sm:w-auto"
+              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-8 py-3.5 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] disabled:pointer-events-none disabled:opacity-60 sm:w-auto"
             >
               {saving ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

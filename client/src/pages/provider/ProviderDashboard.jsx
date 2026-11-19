@@ -14,7 +14,6 @@ import {
   Calendar,
   Store,
   ArrowUpRight,
-  Sparkles,
 } from "lucide-react";
 import useAuth from "../../hooks/useAuth";
 import { getProviderDashboardStats } from "../../services/provider.api";
@@ -28,24 +27,32 @@ const QUICK_ACTIONS = [
     description: "View, update, and manage your service listings.",
     path: "/provider/services",
     icon: Wrench,
+    accentClass:
+      "border-[#034078]/20 bg-[#034078]/10 text-[#034078] group-hover:bg-[#034078] group-hover:text-white",
   },
   {
     title: "Booking Requests",
     description: "Review and respond to customer booking requests.",
     path: "/provider/bookings",
     icon: ClipboardList,
+    accentClass:
+      "border-[#1282a2]/25 bg-[#1282a2]/10 text-[#1282a2] group-hover:bg-[#1282a2] group-hover:text-white",
   },
   {
     title: "Set Availability",
     description: "Update your weekly working hours.",
     path: "/provider/availability",
     icon: Calendar,
+    accentClass:
+      "border-emerald-200 bg-emerald-50 text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white",
   },
   {
     title: "Business Profile",
     description: "Manage your business information and service areas.",
     path: "/provider/profile",
     icon: Store,
+    accentClass:
+      "border-[#001f54]/20 bg-[#001f54]/10 text-[#001f54] group-hover:bg-[#001f54] group-hover:text-white",
   },
 ];
 
@@ -138,33 +145,35 @@ const ProviderDashboard = () => {
   ];
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        {/* Welcome Header */}
-        <div className="flex flex-wrap items-end justify-between gap-5">
-          <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
-              <span>Provider Dashboard</span>
+        {/* Welcome Header Card */}
+        <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-5">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+                <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
+                <span>Provider Dashboard</span>
+              </div>
+
+              <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
+                Welcome back, {user?.name?.split(" ")[0] || "Provider"}!
+              </h1>
+
+              <p className="mt-1.5 text-sm font-medium text-[#33415c]">
+                Manage your services, booking requests, and business activity on
+                DoorAssist.
+              </p>
             </div>
 
-            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-              Welcome back, {user?.name?.split(" ")[0] || "Provider"}!
-            </h1>
-
-            <p className="mt-1.5 text-sm font-medium text-slate-500">
-              Manage your services, booking requests, and business activity on
-              DoorAssist.
-            </p>
+            <Link
+              to="/provider/services/create"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] sm:w-auto"
+            >
+              <Plus className="h-4 w-4" />
+              <span>Create Service</span>
+            </Link>
           </div>
-
-          <Link
-            to="/provider/services/create"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-5 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99]"
-          >
-            <Plus className="h-4 w-4" />
-            <span>Create Service</span>
-          </Link>
         </div>
 
         {/* Error */}
@@ -178,9 +187,9 @@ const ProviderDashboard = () => {
 
         {/* Pending Requests Alert Banner */}
         {!loading && stats && stats.bookings.pending > 0 && (
-          <section className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-amber-200/80 bg-amber-50/85 p-5 shadow-xs backdrop-blur-xl sm:px-7">
+          <section className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:px-7">
             <div className="flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-amber-700 ring-1 ring-inset ring-amber-200">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-white text-amber-700">
                 <Clock className="h-5 w-5" />
               </div>
 
@@ -189,7 +198,7 @@ const ProviderDashboard = () => {
                   You have pending booking requests
                 </h2>
 
-                <p className="mt-0.5 text-xs font-medium text-amber-800 sm:text-sm">
+                <p className="mt-0.5 text-xs font-medium text-amber-900 sm:text-sm">
                   {stats.bookings.pending}{" "}
                   {stats.bookings.pending === 1
                     ? "booking request is"
@@ -201,7 +210,7 @@ const ProviderDashboard = () => {
 
             <Link
               to="/provider/bookings"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-sm shadow-amber-600/20 transition-all hover:bg-amber-700 active:scale-95 sm:text-sm"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-xs transition-colors hover:bg-amber-700 sm:text-sm"
             >
               <span>Review Requests</span>
               <ArrowUpRight className="h-4 w-4" />
@@ -211,12 +220,14 @@ const ProviderDashboard = () => {
 
         {/* Business Overview Statistics */}
         <section className="mt-8">
-          <h2 className="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
-            Business Overview
-          </h2>
+          <div className="border-b border-[#e2e8f0] pb-3.5">
+            <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
+              Business Overview
+            </h2>
+          </div>
 
           {!loading && !stats && !error ? (
-            <div className="mt-5 rounded-3xl border border-white/75 bg-white/75 p-8 text-center text-sm font-medium text-slate-500 backdrop-blur-xl">
+            <div className="mt-5 rounded-3xl border border-[#d8e2eb] bg-white p-8 text-center text-sm font-medium text-[#33415c]">
               Dashboard statistics are unavailable.
             </div>
           ) : (
@@ -238,9 +249,11 @@ const ProviderDashboard = () => {
 
         {/* Quick Actions */}
         <section className="mt-10">
-          <h2 className="text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
-            Quick Actions
-          </h2>
+          <div className="border-b border-[#e2e8f0] pb-3.5">
+            <h2 className="text-lg font-extrabold tracking-tight text-[#0a1128] sm:text-xl">
+              Quick Actions
+            </h2>
+          </div>
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {QUICK_ACTIONS.map((action) => {
@@ -250,25 +263,27 @@ const ProviderDashboard = () => {
                 <Link
                   key={action.path}
                   to={action.path}
-                  className="group flex flex-col justify-between rounded-3xl border border-white/75 bg-white/80 p-6 shadow-[0_8px_30px_rgba(203,189,255,0.14)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-[#deabff]/70 hover:bg-white/95 hover:shadow-[0_14px_35px_rgba(203,189,255,0.24)]"
+                  className="group flex flex-col justify-between rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-[#1282a2] hover:shadow-md"
                 >
                   <div>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60 transition-transform duration-300 group-hover:scale-105">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-colors ${action.accentClass}`}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
 
-                    <h3 className="mt-4 text-base font-extrabold text-slate-900 group-hover:text-[#7c56a8]">
+                    <h3 className="mt-4 text-base font-extrabold text-[#0a1128] transition-colors group-hover:text-[#034078]">
                       {action.title}
                     </h3>
 
-                    <p className="mt-1.5 text-xs font-medium leading-5 text-slate-500 sm:text-sm">
+                    <p className="mt-1.5 text-xs font-medium leading-5 text-[#33415c] sm:text-sm">
                       {action.description}
                     </p>
                   </div>
 
-                  <span className="mt-5 inline-flex items-center gap-1 text-xs font-bold text-[#7c56a8] sm:text-sm">
+                  <span className="mt-5 inline-flex items-center gap-1 text-xs font-bold text-[#034078] sm:text-sm">
                     <span>Open</span>
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="h-4 w-4 text-[#1282a2] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </Link>
               );

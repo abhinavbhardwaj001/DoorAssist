@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-[#e4a5ff] opacity-15 blur-3xl"></div>
       <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#acdcff] opacity-15 blur-3xl"></div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 pb-24 sm:px-6 sm:pt-16 md:pb-14 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Brand Column */}
           <div className="sm:col-span-2">
@@ -106,10 +106,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Copyright & Developer Credit Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-center text-xs font-medium text-slate-400 md:flex-row md:text-left">
-          <p>© {new Date().getFullYear()} DoorAssist. All rights reserved.</p>
-
+        {/* Bottom Developer Credit & Copyright Bar */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-center text-xs font-medium text-slate-400 md:flex-row md:pr-20 md:text-left">
           <div className="inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-[#cbbdff]/20 bg-white/3 px-4 py-2.5 backdrop-blur-md">
             <div className="flex items-center gap-1.5">
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#e4a5ff]/15 text-[#e4a5ff] ring-1 ring-inset ring-[#e4a5ff]/30">
@@ -124,11 +122,13 @@ const Footer = () => {
               <p className="text-[11px] font-medium text-slate-400">
                 Designed, Developed &amp; Secured by
               </p>
-              <p className="animate-text-shimmer mt-0.5 text-xs font-extrabold tracking-wider uppercase">
+              <p className="animate-text-shimmer mt-0.5 text-xs font-extrabold uppercase tracking-wider">
                 Abhinav Bhardwaj
               </p>
             </div>
           </div>
+
+          <p>© {new Date().getFullYear()} DoorAssist. All rights reserved.</p>
         </div>
       </div>
     </footer>

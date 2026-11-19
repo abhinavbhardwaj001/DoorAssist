@@ -76,16 +76,16 @@ const ProviderDetails = () => {
 
   if (loading) {
     return (
-      <div className="px-4 py-10 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#fefcfb] px-4 py-10 sm:px-6 lg:px-8">
         <div
           role="status"
           className="mx-auto max-w-6xl space-y-6 animate-pulse"
         >
-          <div className="h-5 w-48 rounded-full bg-white/75" />
-          <div className="h-56 rounded-4xl border border-white/70 bg-white/65" />
+          <div className="h-5 w-48 rounded bg-[#e2e8f0]" />
+          <div className="h-56 rounded-3xl border border-[#d8e2eb] bg-white" />
           <div className="grid gap-8 lg:grid-cols-3">
-            <div className="h-64 rounded-4xl border border-white/70 bg-white/65 lg:col-span-2" />
-            <div className="h-64 rounded-4xl border border-white/70 bg-white/65" />
+            <div className="h-64 rounded-3xl border border-[#d8e2eb] bg-white lg:col-span-2" />
+            <div className="h-64 rounded-3xl border border-[#d8e2eb] bg-white" />
           </div>
           <span className="sr-only">Loading provider details...</span>
         </div>
@@ -95,23 +95,23 @@ const ProviderDetails = () => {
 
   if (error || !provider) {
     return (
-      <div className="flex min-h-[70vh] items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md rounded-4xl border border-white/75 bg-white/80 p-8 text-center shadow-[0_12px_45px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-10">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100/80 text-rose-600 ring-1 ring-inset ring-rose-200/80">
+      <div className="flex min-h-[75vh] items-center justify-center bg-[#fefcfb] px-4 py-12">
+        <div className="w-full max-w-md rounded-3xl border border-[#d8e2eb] bg-white p-8 text-center shadow-sm sm:p-10">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-red-200 bg-red-50 text-red-600">
             <AlertCircle className="h-7 w-7" />
           </div>
 
-          <h1 className="mt-5 text-2xl font-extrabold text-slate-900">
+          <h1 className="mt-5 text-2xl font-extrabold text-[#0a1128]">
             Provider Unavailable
           </h1>
 
-          <p role="alert" className="mt-3 text-sm font-medium text-slate-500">
+          <p role="alert" className="mt-3 text-sm font-medium text-[#33415c]">
             {error || "This provider could not be found."}
           </p>
 
           <Link
             to="/services"
-            className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:brightness-105"
+            className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-[#034078] px-6 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54]"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Explore Services</span>
@@ -122,29 +122,31 @@ const ProviderDetails = () => {
   }
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-6xl">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="mb-6 inline-flex flex-wrap items-center gap-1.5 rounded-full border border-[#bfcaff]/45 bg-white/70 px-4 py-2 text-xs font-bold text-slate-500 shadow-xs backdrop-blur-md sm:text-sm"
+          className="mb-6 inline-flex flex-wrap items-center gap-1.5 rounded-xl border border-[#d8e2eb] bg-white px-4 py-2 text-xs font-semibold text-[#33415c] shadow-xs sm:text-sm"
         >
-          <Link to="/" className="transition-colors hover:text-[#7c56a8]">
+          <Link to="/" className="transition-colors hover:text-[#034078]">
             Home
           </Link>
 
-          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+          <ChevronRight className="h-3.5 w-3.5 text-[#64748b]" />
 
           <Link
             to="/services"
-            className="transition-colors hover:text-[#7c56a8]"
+            className="transition-colors hover:text-[#034078]"
           >
             Services
           </Link>
 
-          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+          <ChevronRight className="h-3.5 w-3.5 text-[#64748b]" />
 
-          <span className="text-slate-900">{provider.businessName}</span>
+          <span className="font-bold text-[#0a1128]">
+            {provider.businessName}
+          </span>
         </nav>
 
         {/* Provider Header */}
@@ -160,30 +162,30 @@ const ProviderDetails = () => {
           {/* Main Content */}
           <div className="space-y-8 lg:col-span-2">
             {/* About */}
-            <section className="rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+            <section className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+              <div className="flex items-center gap-2.5 border-b border-[#e2e8f0] pb-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
                   <FileText className="h-4 w-4" />
                 </div>
-                <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+                <h2 className="text-lg font-extrabold text-[#0a1128] sm:text-xl">
                   About the Provider
                 </h2>
               </div>
 
-              <p className="mt-5 whitespace-pre-line text-sm font-medium leading-7 text-slate-600 sm:text-base">
+              <p className="mt-5 whitespace-pre-line text-sm font-medium leading-7 text-[#33415c] sm:text-base">
                 {provider.description ||
                   "This provider has not added a business description yet."}
               </p>
             </section>
 
             {/* Reviews */}
-            <section className="rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-8">
-              <div className="flex flex-wrap items-center justify-between gap-3">
+            <section className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#e2e8f0] pb-4">
                 <div className="flex items-center gap-2.5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
                     <MessageSquare className="h-4 w-4" />
                   </div>
-                  <h2 className="text-lg font-extrabold text-slate-900 sm:text-xl">
+                  <h2 className="text-lg font-extrabold text-[#0a1128] sm:text-xl">
                     Customer Reviews
                   </h2>
                 </div>
@@ -202,7 +204,7 @@ const ProviderDetails = () => {
                   {[1, 2].map((item) => (
                     <div
                       key={item}
-                      className="h-24 rounded-2xl border border-white/80 bg-white/65"
+                      className="h-24 rounded-xl border border-[#d8e2eb] bg-[#f8fafc]"
                     />
                   ))}
                   <span className="sr-only">Loading reviews...</span>
@@ -216,7 +218,7 @@ const ProviderDetails = () => {
               ) : reviews.length === 0 ? (
                 <div className="mt-6">
                   <EmptyState
-                    icon={<Star className="h-6 w-6 text-[#7c56a8]" />}
+                    icon={<Star className="h-6 w-6 text-[#034078]" />}
                     title="No reviews yet"
                     message="Customer reviews will appear here once completed bookings are rated."
                   />
@@ -232,12 +234,12 @@ const ProviderDetails = () => {
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24">
             {/* Service Areas */}
-            <section className="rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_12px_45px_rgba(203,189,255,0.18)] backdrop-blur-2xl">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+            <section className="rounded-2xl border border-[#d8e2eb] bg-white p-6 shadow-xs">
+              <div className="flex items-center gap-2.5 border-b border-[#e2e8f0] pb-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
                   <MapPin className="h-4 w-4" />
                 </div>
-                <h2 className="text-lg font-extrabold text-slate-900">
+                <h2 className="text-lg font-extrabold text-[#0a1128]">
                   Service Areas
                 </h2>
               </div>
@@ -247,39 +249,41 @@ const ProviderDetails = () => {
                   {provider.serviceAreas.map((area, index) => (
                     <span
                       key={`${area.city}-${area.state}-${index}`}
-                      className="rounded-xl border border-[#deabff]/60 bg-linear-to-r from-[#f6ebff]/90 via-[#f4f1ff]/90 to-[#ebf6ff]/90 px-3.5 py-2 text-xs font-bold text-slate-800 shadow-xs"
+                      className="rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3 py-1.5 text-xs font-bold text-[#0a1128]"
                     >
                       {area.city}, {area.state}
                     </span>
                   ))}
                 </div>
               ) : (
-                <p className="mt-4 text-xs font-medium text-slate-500 sm:text-sm">
+                <p className="mt-4 text-xs font-medium text-[#33415c] sm:text-sm">
                   Service areas are not listed yet.
                 </p>
               )}
             </section>
 
             {/* CTA */}
-            <section className="relative overflow-hidden rounded-4xl border border-white/80 bg-linear-to-br from-[#e4a5ff]/45 via-[#cbbdff]/45 to-[#acdcff]/45 p-6 shadow-[0_12px_40px_rgba(203,189,255,0.22)] backdrop-blur-2xl">
-              <div className="relative z-10">
-                <h2 className="text-xl font-extrabold tracking-tight text-slate-900">
-                  Need a home service?
-                </h2>
+            <section className="rounded-2xl bg-[#0a1128] p-6 text-white shadow-sm">
+              <span className="inline-block rounded-md bg-[#1282a2] px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                Book Now
+              </span>
 
-                <p className="mt-2.5 text-xs font-medium leading-6 text-slate-700 sm:text-sm">
-                  Explore available services and request a booking with a
-                  verified local provider.
-                </p>
+              <h2 className="mt-3.5 text-xl font-extrabold tracking-tight text-white">
+                Need a home service?
+              </h2>
 
-                <Link
-                  to="/services"
-                  className="mt-5 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5 py-3 text-xs font-bold text-white shadow-md shadow-slate-900/15 transition-all hover:scale-[1.02] hover:bg-slate-800 active:scale-[0.99] sm:text-sm"
-                >
-                  <span>Browse Services</span>
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
+              <p className="mt-2 text-xs font-medium leading-6 text-[#cbd5e1] sm:text-sm">
+                Explore available services and request a booking with a verified
+                local provider.
+              </p>
+
+              <Link
+                to="/services"
+                className="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-white px-5 py-3 text-xs font-bold text-[#0a1128] transition-colors hover:bg-[#e2e8f0] sm:text-sm"
+              >
+                <span>Browse Services</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
             </section>
           </aside>
         </div>

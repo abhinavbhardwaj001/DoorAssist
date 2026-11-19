@@ -20,32 +20,26 @@ const ServiceFilters = ({
   handleCategoryChange,
   handleClearFilters,
 }) => {
-  return (
-    <div className="relative overflow-hidden rounded-4xl border border-white/75 bg-white/80 p-5 shadow-[0_8px_40px_rgba(203,189,255,0.18)] backdrop-blur-2xl sm:p-7">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-16 -right-16 h-44 w-44 rounded-full bg-[#acdcff]/25 blur-3xl"
-      />
+  const inputClass =
+    "w-full rounded-xl border border-[#cbd5e1] bg-white py-3 pl-10 text-sm font-medium text-[#0a1128] placeholder:text-[#64748b] shadow-2xs transition-colors outline-none focus:border-[#1282a2] focus:ring-3 focus:ring-[#1282a2]/20";
 
+  return (
+    <div className="rounded-3xl border border-[#d8e2eb] bg-white p-5 shadow-xs sm:p-7">
       <form
         onSubmit={handleSearch}
-        className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5"
+        className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5"
       >
         {/* Search */}
         <div>
           <label
             htmlFor="service-search"
-            className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600"
+            className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#64748b]"
           >
             Search Services
           </label>
 
           <div className="relative">
-            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9687c7]" />
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
 
             <input
               id="service-search"
@@ -53,7 +47,7 @@ const ServiceFilters = ({
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="e.g. AC Repair"
-              className="w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 py-3 pl-10 pr-4 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30"
+              className={`${inputClass} pr-4`}
             />
           </div>
         </div>
@@ -62,13 +56,13 @@ const ServiceFilters = ({
         <div>
           <label
             htmlFor="service-city"
-            className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600"
+            className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#64748b]"
           >
             City
           </label>
 
           <div className="relative">
-            <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#7195c2]" />
+            <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
 
             <input
               id="service-city"
@@ -76,7 +70,7 @@ const ServiceFilters = ({
               value={cityInput}
               onChange={(e) => setCityInput(e.target.value)}
               placeholder="e.g. Saharanpur"
-              className="w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 py-3 pl-10 pr-4 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30"
+              className={`${inputClass} pr-4`}
             />
           </div>
         </div>
@@ -85,19 +79,19 @@ const ServiceFilters = ({
         <div>
           <label
             htmlFor="service-category"
-            className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600"
+            className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#64748b]"
           >
             Category
           </label>
 
           <div className="relative">
-            <LayoutGrid className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9687c7]" />
+            <LayoutGrid className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#1282a2]" />
 
             <select
               id="service-category"
               value={categoryId}
               onChange={handleCategoryChange}
-              className="w-full appearance-none rounded-2xl border border-[#bfcaff]/50 bg-white/75 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 shadow-xs backdrop-blur-md transition-all outline-none focus:border-[#a575bf] focus:bg-white focus:ring-4 focus:ring-[#cbbdff]/30"
+              className={`${inputClass} appearance-none pr-10`}
             >
               <option value="">All Categories</option>
 
@@ -108,15 +102,15 @@ const ServiceFilters = ({
               ))}
             </select>
 
-            <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+            <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#33415c]" />
           </div>
         </div>
 
         {/* Buttons */}
-        <div className="mt-1 flex flex-col gap-3 border-t border-[#bfcaff]/30 pt-4 sm:flex-row sm:flex-wrap md:col-span-3">
+        <div className="mt-1 flex flex-col gap-3 border-t border-[#e2e8f0] pt-4 sm:flex-row sm:flex-wrap md:col-span-3">
           <button
             type="submit"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] px-7 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-[#cbbdff]/30 transition-all hover:scale-[1.01] hover:brightness-105 active:scale-[0.99] sm:w-auto"
+            className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#034078] px-7 py-3 text-sm font-bold text-white shadow-xs transition-colors hover:bg-[#001f54] sm:w-auto"
           >
             <SlidersHorizontal className="h-4 w-4" />
             <span>Apply Filters</span>
@@ -125,9 +119,9 @@ const ServiceFilters = ({
           <button
             type="button"
             onClick={handleClearFilters}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#bfcaff]/50 bg-white/75 px-6 py-3 text-sm font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-[0.99] sm:w-auto"
+            className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#cbd5e1] bg-[#f8fafc] px-6 py-3 text-sm font-bold text-[#0a1128] shadow-2xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] sm:w-auto"
           >
-            <RotateCcw className="h-4 w-4 text-slate-500" />
+            <RotateCcw className="h-4 w-4 text-[#1282a2]" />
             <span>Clear Filters</span>
           </button>
         </div>
@@ -136,7 +130,7 @@ const ServiceFilters = ({
       {categoriesError && (
         <div
           role="alert"
-          className="relative z-10 mt-4 flex items-center gap-2 rounded-2xl border border-red-200/80 bg-red-50/85 px-4 py-3 text-xs font-semibold text-red-700 backdrop-blur-md sm:text-sm"
+          className="mt-4 flex items-center gap-2 rounded-2xl border border-red-200 border-l-4 border-l-red-600 bg-red-50 px-4 py-3 text-xs font-semibold text-red-900 sm:text-sm"
         >
           <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
           <span>{categoriesError}</span>

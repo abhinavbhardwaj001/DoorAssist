@@ -11,7 +11,6 @@ import {
   Hash,
   Wallet,
   Info,
-  Sparkles,
 } from "lucide-react";
 import { useNotification } from "../../context/NotificationContext";
 import { getMyPayments } from "../../services/payment.api";
@@ -94,37 +93,39 @@ const MyPayments = () => {
   ];
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1 text-xs font-bold text-slate-700 shadow-xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-[#a575bf]" />
-              <span>Customer Portal</span>
+        {/* Header Card */}
+        <div className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs sm:p-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#034078]">
+                <span className="h-2 w-2 rounded-full bg-[#1282a2]" />
+                <span>Customer Portal</span>
+              </div>
+
+              <h1 className="mt-3.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
+                My Payments
+              </h1>
+
+              <p className="mt-1.5 text-sm font-medium text-[#33415c]">
+                Track simulated payments and transaction receipts associated
+                with your bookings.
+              </p>
             </div>
 
-            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-              My Payments
-            </h1>
-
-            <p className="mt-1.5 text-sm font-medium text-slate-500">
-              Track simulated payments and transaction receipts associated with
-              your bookings.
-            </p>
+            <button
+              type="button"
+              onClick={fetchPayments}
+              disabled={loading}
+              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-5 py-3 text-sm font-bold text-[#0a1128] shadow-xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+            >
+              <RefreshCw
+                className={`h-4 w-4 text-[#1282a2] ${loading ? "animate-spin" : ""}`}
+              />
+              <span>Refresh</span>
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={fetchPayments}
-            disabled={loading}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#bfcaff]/55 bg-white/80 px-5 py-3 text-sm font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
-          >
-            <RefreshCw
-              className={`h-4 w-4 text-[#7c56a8] ${loading ? "animate-spin" : ""}`}
-            />
-            <span>Refresh</span>
-          </button>
         </div>
 
         {error && (
@@ -149,26 +150,21 @@ const MyPayments = () => {
           ))}
         </div>
 
-        {/* Simulated Total Banner */}
-        <div className="relative mt-5 overflow-hidden rounded-4xl border border-white/75 bg-linear-to-r from-[#f6ebff]/90 via-[#f4f1ff]/90 to-[#ebf6ff]/90 p-6 shadow-[0_10px_35px_rgba(203,189,255,0.2)] backdrop-blur-2xl sm:p-7">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#e4a5ff]/25 blur-3xl"
-          />
-
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
+        {/* Simulated Total Card */}
+        <div className="mt-5 rounded-3xl border border-[#d8e2eb] border-l-4 border-l-[#1282a2] bg-white p-6 shadow-xs sm:p-7">
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#7c56a8]">
-                <Wallet className="h-4 w-4" />
+              <div className="inline-flex items-center gap-2 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#034078]">
+                <Wallet className="h-3.5 w-3.5 text-[#1282a2]" />
                 <span>Total Successful Payment Amount</span>
               </div>
 
-              <p className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+              <p className="mt-3 text-3xl font-extrabold tracking-tight text-[#0a1128] sm:text-4xl">
                 {loading ? "—" : formatCurrency(totalPaid, "INR", 2)}
               </p>
 
-              <p className="mt-2.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-                <Info className="h-3.5 w-3.5 shrink-0 text-[#7c56a8]" />
+              <p className="mt-2.5 flex items-center gap-1.5 text-xs font-medium text-[#33415c]">
+                <Info className="h-3.5 w-3.5 shrink-0 text-[#1282a2]" />
                 <span>
                   Simulation only — no real money was transferred. This total
                   excludes failed, pending, and refunded payments.
@@ -192,7 +188,7 @@ const MyPayments = () => {
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="h-44 rounded-3xl border border-white/70 bg-white/65"
+                className="h-44 rounded-3xl border border-[#d8e2eb] bg-white"
               />
             ))}
             <span className="sr-only">Loading payments...</span>
@@ -200,7 +196,7 @@ const MyPayments = () => {
         ) : filteredPayments.length === 0 ? (
           <div className="mt-6">
             <EmptyState
-              icon={<CreditCard className="h-7 w-7 text-[#7c56a8]" />}
+              icon={<CreditCard className="h-7 w-7 text-[#034078]" />}
               title="No payments found"
               message={
                 filter === "all"
@@ -227,15 +223,15 @@ const MyPayments = () => {
               return (
                 <article
                   key={payment._id}
-                  className="rounded-4xl border border-white/75 bg-white/80 p-6 shadow-[0_10px_35px_rgba(203,189,255,0.16)] backdrop-blur-2xl transition-all duration-300 hover:border-[#deabff]/60 sm:p-7"
+                  className="rounded-3xl border border-[#d8e2eb] bg-white p-6 shadow-xs transition-colors hover:border-[#1282a2] sm:p-7"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#64748b]">
                         Payment Amount
                       </p>
 
-                      <h2 className="mt-1.5 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
+                      <h2 className="mt-1.5 text-2xl font-extrabold tracking-tight text-[#0a1128] sm:text-3xl">
                         {formatCurrency(
                           payment.amount,
                           payment.currency || "INR",
@@ -243,7 +239,7 @@ const MyPayments = () => {
                         )}
                       </h2>
 
-                      <p className="mt-1.5 font-mono text-xs font-semibold text-slate-400">
+                      <p className="mt-1.5 font-mono text-xs font-semibold text-[#64748b]">
                         Payment ID: {payment._id}
                       </p>
                     </div>
@@ -251,66 +247,66 @@ const MyPayments = () => {
                     <PaymentStatusBadge status={payment.status} size="md" />
                   </div>
 
-                  <div className="mt-6 grid gap-4 border-t border-[#bfcaff]/30 pt-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <div className="rounded-2xl border border-[#bfcaff]/40 bg-white/65 p-3.5">
-                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-                        <CreditCard className="h-3.5 w-3.5 text-[#7c56a8]" />
+                  <div className="mt-6 grid gap-4 border-t border-[#e2e8f0] pt-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-3.5">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                        <CreditCard className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Payment Method</span>
                       </div>
-                      <p className="mt-1.5 text-sm font-extrabold capitalize text-slate-900">
+                      <p className="mt-1.5 text-sm font-extrabold capitalize text-[#0a1128]">
                         {payment.paymentMethod || "—"}
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#bfcaff]/40 bg-white/65 p-3.5">
-                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-                        <Calendar className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-3.5">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                        <Calendar className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Payment Created</span>
                       </div>
-                      <p className="mt-1.5 text-sm font-extrabold text-slate-900">
+                      <p className="mt-1.5 text-sm font-extrabold text-[#0a1128]">
                         {formatDateTime(payment.createdAt, "—")}
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#bfcaff]/40 bg-white/65 p-3.5">
-                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-3.5">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Paid At</span>
                       </div>
-                      <p className="mt-1.5 text-sm font-extrabold text-slate-900">
+                      <p className="mt-1.5 text-sm font-extrabold text-[#0a1128]">
                         {formatDateTime(payment.paidAt, "—")}
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#bfcaff]/40 bg-white/65 p-3.5">
-                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-                        <Clock className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-3.5">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                        <Clock className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Booking Date</span>
                       </div>
-                      <p className="mt-1.5 text-sm font-extrabold text-slate-900">
+                      <p className="mt-1.5 text-sm font-extrabold text-[#0a1128]">
                         {formatDateTime(scheduledAt, "—")}
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-[#bfcaff]/40 bg-white/65 p-3.5 sm:col-span-2">
-                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500">
-                        <Hash className="h-3.5 w-3.5 text-[#7c56a8]" />
+                    <div className="rounded-2xl border border-[#d8e2eb] bg-[#f8fafc] p-3.5 sm:col-span-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#64748b]">
+                        <Hash className="h-3.5 w-3.5 text-[#1282a2]" />
                         <span>Transaction ID</span>
                       </div>
-                      <p className="mt-1.5 break-all font-mono text-xs font-bold text-slate-800 sm:text-sm">
+                      <p className="mt-1.5 break-all font-mono text-xs font-bold text-[#0a1128] sm:text-sm">
                         {payment.transactionId || "Not generated"}
                       </p>
                     </div>
                   </div>
 
                   {bookingId && (
-                    <div className="mt-6 border-t border-[#bfcaff]/30 pt-5">
+                    <div className="mt-6 border-t border-[#e2e8f0] pt-5">
                       <Link
                         to={`/bookings/${bookingId}`}
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-[#bfcaff]/55 bg-white/80 px-4 py-2.5 text-xs font-bold text-slate-700 shadow-xs transition-all hover:border-[#deabff] hover:bg-linear-to-r hover:from-[#e4a5ff]/20 hover:to-[#acdcff]/20 hover:text-slate-900 sm:text-sm"
+                        className="inline-flex items-center gap-1.5 rounded-xl bg-[#034078] px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-[#001f54] sm:text-sm"
                       >
                         <span>View Booking Details</span>
-                        <ArrowUpRight className="h-4 w-4 text-[#7c56a8]" />
+                        <ArrowUpRight className="h-4 w-4" />
                       </Link>
                     </div>
                   )}

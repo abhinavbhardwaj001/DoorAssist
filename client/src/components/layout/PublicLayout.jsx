@@ -14,16 +14,7 @@ const PublicLayout = () => {
     pathname.startsWith("/providers/");
 
   return (
-    <div className="relative flex min-h-dvh flex-col overflow-x-clip bg-linear-to-br from-[#f8f5ff] via-[#fbfaff] to-[#f2f8ff] text-slate-800 selection:bg-[#deabff]/40 selection:text-slate-900">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed -left-32 top-20 -z-10 h-96 w-96 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed -right-32 top-1/2 -z-10 h-96 w-96 rounded-full bg-[#acdcff]/25 blur-3xl"
-      />
-
+    <div className="relative flex min-h-dvh flex-col overflow-x-clip bg-[#fefcfb] text-[#0a1128] selection:bg-[#1282a2]/20 selection:text-[#0a1128]">
       <Navbar />
 
       <main className="relative z-0 flex-1">

@@ -175,7 +175,7 @@ const AdminProviders = () => {
   };
 
   return (
-    <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div className="min-h-screen bg-[#fefcfb] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <AdminPageHeader
           title="Provider Applications"
@@ -185,10 +185,10 @@ const AdminProviders = () => {
               type="button"
               onClick={handleRefresh}
               disabled={loading || Boolean(processingId)}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#bfcaff]/50 bg-white/80 px-5 py-3 text-sm font-bold text-slate-700 shadow-xs backdrop-blur-md transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#cbd5e1] bg-white px-5 py-3 text-sm font-bold text-[#0a1128] shadow-xs transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] hover:text-[#034078] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
             >
               <RefreshCw
-                className={`h-4 w-4 text-[#7c56a8] ${loading ? "animate-spin" : ""}`}
+                className={`h-4 w-4 text-[#1282a2] ${loading ? "animate-spin" : ""}`}
               />
               <span>Refresh</span>
             </button>
@@ -197,7 +197,7 @@ const AdminProviders = () => {
 
         {/* Search & Filter Controls */}
         <div className="mt-7 space-y-4">
-          <div className="relative overflow-hidden rounded-3xl border border-white/75 bg-white/80 p-4 shadow-[0_8px_30px_rgba(203,189,255,0.14)] backdrop-blur-2xl sm:p-5">
+          <div className="rounded-2xl border border-[#d8e2eb] bg-white p-4 shadow-xs sm:p-5">
             <SearchBar
               value={searchInput}
               onChange={setSearchInput}
@@ -218,10 +218,10 @@ const AdminProviders = () => {
                     type="button"
                     onClick={() => changeFilter(status)}
                     aria-pressed={isActive}
-                    className={`rounded-full px-4 py-2 text-xs font-bold capitalize transition-all active:scale-95 sm:px-5 sm:text-sm ${
+                    className={`cursor-pointer rounded-xl px-4 py-2 text-xs font-bold capitalize transition-colors sm:px-5 sm:text-sm ${
                       isActive
-                        ? "bg-linear-to-r from-[#e4a5ff] via-[#cbbdff] to-[#acdcff] text-slate-900 shadow-sm shadow-[#cbbdff]/30"
-                        : "border border-[#bfcaff]/45 bg-white/75 text-slate-600 backdrop-blur-md hover:border-[#deabff] hover:bg-white hover:text-slate-900"
+                        ? "bg-[#034078] text-white"
+                        : "border border-[#d8e2eb] bg-white text-[#33415c] hover:border-[#034078] hover:text-[#0a1128]"
                     }`}
                   >
                     {status}
@@ -230,7 +230,7 @@ const AdminProviders = () => {
               })}
             </div>
 
-            <span className="rounded-full border border-[#bfcaff]/40 bg-white/70 px-3.5 py-1.5 text-xs font-bold text-slate-600 backdrop-blur-md">
+            <span className="rounded-lg border border-[#d8e2eb] bg-white px-3.5 py-1.5 text-xs font-bold text-[#034078] shadow-xs">
               {loading
                 ? "Loading..."
                 : `${pagination.total} matching ${
@@ -251,32 +251,23 @@ const AdminProviders = () => {
             {[1, 2, 3].map((item) => (
               <div
                 key={item}
-                className="h-44 rounded-3xl border border-white/70 bg-white/65"
+                className="h-44 rounded-2xl border border-[#d8e2eb] bg-white"
               />
             ))}
             <span className="sr-only">Loading provider applications...</span>
           </div>
         ) : applications.length === 0 ? (
-          <div className="relative mt-5 overflow-hidden rounded-3xl border border-white/75 bg-white/80 px-6 py-14 text-center shadow-[0_8px_35px_rgba(203,189,255,0.16)] backdrop-blur-2xl">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#e4a5ff]/20 blur-3xl"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-16 -right-16 h-44 w-44 rounded-full bg-[#acdcff]/25 blur-3xl"
-            />
-
-            <div className="relative z-10 mx-auto flex max-w-md flex-col items-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-[#e4a5ff]/35 via-[#cbbdff]/35 to-[#acdcff]/35 text-[#7c56a8] ring-1 ring-inset ring-[#deabff]/60">
+          <div className="mt-5 rounded-2xl border border-[#d8e2eb] bg-white px-6 py-14 text-center shadow-xs">
+            <div className="mx-auto flex max-w-md flex-col items-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] text-[#034078]">
                 <ClipboardList className="h-5 w-5" />
               </div>
 
-              <h3 className="mt-3.5 text-base font-extrabold text-slate-900 sm:text-lg">
+              <h3 className="mt-3.5 text-base font-extrabold text-[#0a1128] sm:text-lg">
                 No applications found
               </h3>
 
-              <p className="mt-1.5 text-xs font-medium leading-relaxed text-slate-500 sm:text-sm">
+              <p className="mt-1.5 text-xs font-medium leading-relaxed text-[#33415c] sm:text-sm">
                 No provider applications match your current filters.
               </p>
             </div>
@@ -286,12 +277,12 @@ const AdminProviders = () => {
             {applications.map((provider) => (
               <article
                 key={provider._id}
-                className="relative overflow-hidden rounded-3xl border border-white/75 bg-white/80 p-4 shadow-[0_6px_25px_rgba(203,189,255,0.14)] backdrop-blur-2xl transition-all hover:border-[#deabff]/60 hover:shadow-[0_10px_32px_rgba(203,189,255,0.2)] sm:p-5"
+                className="rounded-2xl border border-[#d8e2eb] bg-white p-4 shadow-xs transition-colors hover:border-[#1282a2] sm:p-5"
               >
                 {/* Top Row: Avatar, Business Info, Metadata & Status */}
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-start gap-3.5">
-                    <div className="flex h-13 w-13 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/80 bg-linear-to-br from-[#f6ebff] via-[#f4f1ff] to-[#ebf6ff] shadow-xs sm:h-14 sm:w-14">
+                    <div className="flex h-13 w-13 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#d8e2eb] bg-[#f4f7fa] sm:h-14 sm:w-14">
                       {provider.profileImage ? (
                         <img
                           src={provider.profileImage}
@@ -300,28 +291,28 @@ const AdminProviders = () => {
                           className="h-full w-full object-cover"
                         />
                       ) : (
-                        <Store className="h-6 w-6 text-[#8b7cc8]" />
+                        <Store className="h-6 w-6 text-[#034078]" />
                       )}
                     </div>
 
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-base font-extrabold tracking-tight text-slate-900 sm:text-lg">
+                        <h3 className="text-base font-extrabold tracking-tight text-[#0a1128] sm:text-lg">
                           {provider.businessName}
                         </h3>
-                        <span className="text-xs font-semibold text-slate-400">
+                        <span className="text-xs font-semibold text-[#64748b]">
                           •
                         </span>
-                        <span className="text-xs font-bold text-slate-700 sm:text-sm">
+                        <span className="text-xs font-bold text-[#034078] sm:text-sm">
                           {provider.userId?.name || "Provider Applicant"}
                         </span>
                       </div>
 
                       {/* Inline Metadata Strip */}
-                      <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium text-slate-500">
+                      <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-medium text-[#33415c]">
                         {provider.userId?.email && (
                           <span className="inline-flex items-center gap-1.5">
-                            <Mail className="h-3.5 w-3.5 shrink-0 text-[#9687c7]" />
+                            <Mail className="h-3.5 w-3.5 shrink-0 text-[#1282a2]" />
                             <span className="truncate">
                               {provider.userId.email}
                             </span>
@@ -329,7 +320,7 @@ const AdminProviders = () => {
                         )}
 
                         <span className="inline-flex items-center gap-1.5">
-                          <Briefcase className="h-3.5 w-3.5 shrink-0 text-[#9687c7]" />
+                          <Briefcase className="h-3.5 w-3.5 shrink-0 text-[#1282a2]" />
                           <span>
                             {provider.experienceYears != null
                               ? `${provider.experienceYears} ${
@@ -340,7 +331,7 @@ const AdminProviders = () => {
                         </span>
 
                         <span className="inline-flex items-center gap-1.5">
-                          <Calendar className="h-3.5 w-3.5 shrink-0 text-[#7195c2]" />
+                          <Calendar className="h-3.5 w-3.5 shrink-0 text-[#034078]" />
                           <span>Applied {formatDate(provider.createdAt)}</span>
                         </span>
                       </div>
@@ -355,35 +346,35 @@ const AdminProviders = () => {
 
                 {/* Compact Description */}
                 {provider.description && (
-                  <p className="mt-3 line-clamp-2 rounded-2xl border border-[#bfcaff]/25 bg-white/60 px-3.5 py-2.5 text-xs font-medium leading-5 text-slate-600 sm:text-sm">
+                  <p className="mt-3 line-clamp-2 rounded-xl border border-[#e2e8f0] bg-[#f8fafc] px-3.5 py-2.5 text-xs font-medium leading-5 text-[#33415c] sm:text-sm">
                     {provider.description}
                   </p>
                 )}
 
                 {provider.rejectionReason && (
-                  <div className="mt-3 flex items-start gap-2 rounded-2xl border border-red-200/80 bg-red-50/85 px-3.5 py-2.5 text-xs font-semibold text-red-700">
+                  <div className="mt-3 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs font-semibold text-red-700">
                     <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-red-600" />
                     <span>Rejection reason: {provider.rejectionReason}</span>
                   </div>
                 )}
 
                 {/* Bottom Row: Service Areas & Pending Actions */}
-                <div className="mt-3.5 flex flex-col justify-between gap-3 border-t border-[#bfcaff]/25 pt-3.5 sm:flex-row sm:items-center">
+                <div className="mt-3.5 flex flex-col justify-between gap-3 border-t border-[#e2e8f0] pt-3.5 sm:flex-row sm:items-center">
                   <div className="flex flex-wrap items-center gap-1.5">
                     {provider.serviceAreas?.length ? (
                       provider.serviceAreas.map((area, index) => (
                         <span
                           key={`${area.city}-${area.state}-${index}`}
-                          className="inline-flex items-center gap-1 rounded-full border border-[#bfcaff]/50 bg-linear-to-r from-[#e4a5ff]/15 via-[#cbbdff]/15 to-[#acdcff]/15 px-2.5 py-1 text-[11px] font-bold text-slate-700"
+                          className="inline-flex items-center gap-1 rounded-lg border border-[#d8e2eb] bg-[#f4f7fa] px-2.5 py-1 text-[11px] font-bold text-[#0a1128]"
                         >
-                          <MapPin className="h-3 w-3 text-[#7c56a8]" />
+                          <MapPin className="h-3 w-3 text-[#1282a2]" />
                           <span>
                             {area.city}, {area.state}
                           </span>
                         </span>
                       ))
                     ) : (
-                      <span className="text-xs font-medium text-slate-400">
+                      <span className="text-xs font-medium text-[#64748b]">
                         No service areas listed
                       </span>
                     )}
@@ -395,7 +386,7 @@ const AdminProviders = () => {
                         type="button"
                         onClick={() => openDialog(provider, "approve")}
                         disabled={Boolean(processingId)}
-                        className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-bold text-white shadow-sm shadow-emerald-500/20 transition-all hover:bg-emerald-600 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 sm:flex-initial"
+                        className="inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-colors hover:bg-emerald-700 disabled:pointer-events-none disabled:opacity-50 sm:flex-initial"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>Approve</span>
@@ -405,7 +396,7 @@ const AdminProviders = () => {
                         type="button"
                         onClick={() => openDialog(provider, "reject")}
                         disabled={Boolean(processingId)}
-                        className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-red-200/90 bg-red-50/75 px-3.5 py-2 text-xs font-bold text-red-600 transition-all hover:border-red-300 hover:bg-red-100/80 hover:text-red-700 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 sm:flex-initial"
+                        className="inline-flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-red-200 bg-red-50 px-3.5 py-2 text-xs font-bold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100 disabled:pointer-events-none disabled:opacity-50 sm:flex-initial"
                       >
                         <XCircle className="h-3.5 w-3.5" />
                         <span>Reject</span>
@@ -441,8 +432,8 @@ const AdminProviders = () => {
         icon={action === "approve" ? CheckCircle2 : XCircle}
         iconBadgeClass={
           action === "approve"
-            ? "bg-emerald-100/90 text-emerald-600 ring-emerald-200/80"
-            : "bg-red-100/90 text-red-600 ring-red-200/80"
+            ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+            : "border border-red-200 bg-red-50 text-red-700"
         }
         footer={
           <>
@@ -450,7 +441,7 @@ const AdminProviders = () => {
               type="button"
               onClick={closeDialog}
               disabled={Boolean(processingId)}
-              className="rounded-xl border border-[#bfcaff]/50 bg-white/75 px-5 py-2.5 text-sm font-bold text-slate-700 transition-all hover:border-[#deabff] hover:bg-white hover:text-slate-900 disabled:opacity-50"
+              className="cursor-pointer rounded-xl border border-[#cbd5e1] bg-white px-5 py-2.5 text-sm font-bold text-[#0a1128] transition-colors hover:border-[#034078] hover:bg-[#f4f7fa] disabled:opacity-50"
             >
               Cancel
             </button>
@@ -458,10 +449,10 @@ const AdminProviders = () => {
             <button
               type="submit"
               disabled={Boolean(processingId)}
-              className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all active:scale-[0.98] disabled:pointer-events-none disabled:opacity-55 ${
+              className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-xs transition-colors disabled:pointer-events-none disabled:opacity-55 ${
                 action === "approve"
-                  ? "bg-emerald-500 shadow-emerald-500/20 hover:bg-emerald-600"
-                  : "bg-red-500 shadow-red-500/20 hover:bg-red-600"
+                  ? "bg-emerald-600 hover:bg-emerald-700"
+                  : "bg-red-600 hover:bg-red-700"
               }`}
             >
               {processingId && <Loader2 className="h-4 w-4 animate-spin" />}
@@ -476,7 +467,7 @@ const AdminProviders = () => {
           </>
         }
       >
-        <p className="text-sm font-medium leading-6 text-slate-600">
+        <p className="text-sm font-medium leading-6 text-[#33415c]">
           {action === "approve"
             ? `Approve ${selectedProvider?.businessName} as a DoorAssist service provider?`
             : `Reject the application submitted by ${selectedProvider?.businessName}?`}
@@ -487,11 +478,11 @@ const AdminProviders = () => {
             <div className="flex items-center justify-between">
               <label
                 htmlFor="rejectionReason"
-                className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                className="text-xs font-bold uppercase tracking-wider text-[#0a1128]"
               >
-                Rejection Reason <span className="text-rose-500">*</span>
+                Rejection Reason <span className="text-red-600">*</span>
               </label>
-              <span className="text-xs font-semibold text-slate-400">
+              <span className="text-xs font-semibold text-[#64748b]">
                 {rejectionReason.length}/500
               </span>
             </div>
@@ -505,7 +496,7 @@ const AdminProviders = () => {
               minLength={3}
               maxLength={500}
               required
-              className="mt-2 w-full rounded-2xl border border-[#bfcaff]/50 bg-white/75 p-3.5 text-sm font-medium text-slate-800 placeholder:text-slate-400 shadow-xs backdrop-blur-md transition-all outline-none focus:border-red-400 focus:bg-white focus:ring-4 focus:ring-red-100"
+              className="mt-2 w-full rounded-xl border border-[#cbd5e1] bg-[#fefcfb] p-3.5 text-sm font-medium text-[#0a1128] placeholder:text-[#64748b] transition-all outline-none focus:border-red-500 focus:bg-white focus:ring-3 focus:ring-red-100"
             />
           </div>
         )}
